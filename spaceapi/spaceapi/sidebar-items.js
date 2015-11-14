@@ -1,0 +1,1 @@
+initSidebarItems({"mod":[["optional","Useful stuff related to the spaceapi."],["sensors","Module defining all sensor related structures."]],"struct":[["Cache",""],["Contact",""],["Event",""],["Feed",""],["Feeds",""],["Icon",""],["Location",""],["RadioShow",""],["Spacefed",""],["State",""],["Status","The main Space API status object."]]});
