@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["SensorSpec","A specification of a sensor."]],"type":[["SafeSensorSpecs","A vector of sensor specs, wrapped in an Arc and a Mutex. Safe for use in multithreaded situations. TODO: Maybe we could use a RwLock instead of a Mutex?"]]});

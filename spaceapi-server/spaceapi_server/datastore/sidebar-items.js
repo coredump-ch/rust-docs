@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["DataStoreError",""]],"mod":[["common",""]],"struct":[["RedisStore","A data store for Redis."]],"trait":[["DataStore","A ``DataStore`` needs to implement ``store`` and ``retrieve`` methods."]],"type":[["SafeDataStore","A datastore wrapped in an Arc, a Mutex and a Box. Safe for use in multithreaded situations."]]});
