@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["StateFromPeopleNowPresent",""]],"trait":[["StatusModifier","`StatusModifier`s are used to modify the status"]]});

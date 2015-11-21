@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="API documentation for the Rust `spaceapi_server` crate.">
-    <meta name="keywords" content="rust, rustlang, rust-lang, spaceapi_server">
+    <meta name="description" content="API documentation for the Rust `modifiers` mod in crate `spaceapi_server`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, modifiers">
 
-    <title>spaceapi_server - Rust</title>
+    <title>spaceapi_server::modifiers - Rust</title>
 
-    <link rel="stylesheet" type="text/css" href="../main.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
 
     
     
@@ -26,7 +26,7 @@
 
     <nav class="sidebar">
         
-        <p class='location'></p><script>window.sidebarCurrent = {name: 'spaceapi_server', ty: 'mod', relpath: '../'};</script>
+        <p class='location'><a href='../index.html'>spaceapi_server</a></p><script>window.sidebarCurrent = {name: 'modifiers', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
     </nav>
 
     <nav class="sub">
@@ -41,57 +41,27 @@
     </nav>
 
     <section id='main' class="content mod">
-<h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>spaceapi_server</a></span><span class='out-of-band'><span id='render-detail'>
+<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>spaceapi_server</a>::<wbr><a class='mod' href=''>modifiers</a></span><span class='out-of-band'><span id='render-detail'>
             <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                 [<span class='inner'>&#x2212;</span>]
             </a>
-        </span><a id='src-0' class='srclink' href='../src/spaceapi_server/lib.rs.html#1-19' title='goto source code'>[src]</a></span></h1>
-<div class='docblock'><p>The main entry point for the Space API server.</p>
-
-<p>Running this code starts a HTTP server instance. The default port is 3000, but you can set your
-own favorite port by exporting the <code>PORT</code> environment variable.</p>
-</div><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
+        </span><a id='src-2613' class='srclink' href='../../src/spaceapi_server/modifiers.rs.html#1-31' title='goto source code'>[src]</a></span></h1>
+<h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
                     <tr class=' module-item'>
-                        <td><a class='mod' href='api/index.html'
-                               title='spaceapi_server::api'>api</a></td>
+                        <td><a class='struct' href='struct.StateFromPeopleNowPresent.html'
+                               title='spaceapi_server::modifiers::StateFromPeopleNowPresent'>StateFromPeopleNowPresent</a></td>
                         <td class='docblock short'>
                              
                         </td>
                     </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='mod' href='datastore/index.html'
-                               title='spaceapi_server::datastore'>datastore</a></td>
-                        <td class='docblock short'>
-                             <p>Data store related stuff.</p>
-
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='mod' href='modifiers/index.html'
-                               title='spaceapi_server::modifiers'>modifiers</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='mod' href='sensors/index.html'
-                               title='spaceapi_server::sensors'>sensors</a></td>
-                        <td class='docblock short'>
-                             <p>Sensor related stuff.</p>
-
-                        </td>
-                    </tr>
-                </table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+                </table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
 <table>
                     <tr class=' module-item'>
-                        <td><a class='struct' href='struct.SpaceapiServer.html'
-                               title='spaceapi_server::SpaceapiServer'>SpaceapiServer</a></td>
+                        <td><a class='trait' href='trait.StatusModifier.html'
+                               title='spaceapi_server::modifiers::StatusModifier'>StatusModifier</a></td>
                         <td class='docblock short'>
-                             <p>A Space API server instance.</p>
+                             <p><code>StatusModifier</code>s are used to modify the status</p>
 
                         </td>
                     </tr>
@@ -147,13 +117,13 @@ own favorite port by exporting the <code>PORT</code> environment variable.</p>
     
 
     <script>
-        window.rootPath = "../";
+        window.rootPath = "../../";
         window.currentCrate = "spaceapi_server";
         window.playgroundUrl = "";
     </script>
-    <script src="../jquery.js"></script>
-    <script src="../main.js"></script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
     
-    <script async src="../search-index.js"></script>
+    <script async src="../../search-index.js"></script>
 </body>
 </html>

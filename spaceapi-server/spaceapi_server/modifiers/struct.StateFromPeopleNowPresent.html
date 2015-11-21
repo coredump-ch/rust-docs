@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="API documentation for the Rust `SafeDataStore` type in crate `spaceapi_server`.">
-    <meta name="keywords" content="rust, rustlang, rust-lang, SafeDataStore">
+    <meta name="description" content="API documentation for the Rust `StateFromPeopleNowPresent` struct in crate `spaceapi_server`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, StateFromPeopleNowPresent">
 
-    <title>spaceapi_server::datastore::SafeDataStore - Rust</title>
+    <title>spaceapi_server::modifiers::StateFromPeopleNowPresent - Rust</title>
 
     <link rel="stylesheet" type="text/css" href="../../main.css">
 
@@ -26,7 +26,7 @@
 
     <nav class="sidebar">
         
-        <p class='location'><a href='../index.html'>spaceapi_server</a>::<wbr><a href='index.html'>datastore</a></p><script>window.sidebarCurrent = {name: 'SafeDataStore', ty: 'type', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+        <p class='location'><a href='../index.html'>spaceapi_server</a>::<wbr><a href='index.html'>modifiers</a></p><script>window.sidebarCurrent = {name: 'StateFromPeopleNowPresent', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
     </nav>
 
     <nav class="sub">
@@ -40,13 +40,13 @@
         </form>
     </nav>
 
-    <section id='main' class="content type">
-<h1 class='fqn'><span class='in-band'><a href='../index.html'>spaceapi_server</a>::<wbr><a href='index.html'>datastore</a>::<wbr><a class='type' href=''>SafeDataStore</a></span><span class='out-of-band'><span id='render-detail'>
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>spaceapi_server</a>::<wbr><a href='index.html'>modifiers</a>::<wbr><a class='struct' href=''>StateFromPeopleNowPresent</a></span><span class='out-of-band'><span id='render-detail'>
             <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                 [<span class='inner'>&#x2212;</span>]
             </a>
-        </span><a id='src-1582' class='srclink' href='../../src/spaceapi_server/datastore/common.rs.html#17' title='goto source code'>[src]</a></span></h1>
-<pre class='rust typedef'>type SafeDataStore = <a class='struct' href='https://doc.rust-lang.org/nightly/alloc/arc/struct.Arc.html' title='alloc::arc::Arc'>Arc</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/std/sync/mutex/struct.Mutex.html' title='std::sync::mutex::Mutex'>Mutex</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html' title='alloc::boxed::Box'>Box</a>&lt;<a class='trait' href='../../spaceapi_server/datastore/trait.DataStore.html' title='spaceapi_server::datastore::DataStore'>DataStore</a>&gt;&gt;&gt;;</pre><div class='docblock'><p>A datastore wrapped in an Arc, a Mutex and a Box. Safe for use in multithreaded situations.</p>
+        </span><a id='src-2632' class='srclink' href='../../src/spaceapi_server/modifiers.rs.html#13' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct StateFromPeopleNowPresent;</pre><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><code>impl <a class='trait' href='../../spaceapi_server/modifiers/trait.StatusModifier.html' title='spaceapi_server::modifiers::StatusModifier'>StatusModifier</a> for <a class='struct' href='../../spaceapi_server/modifiers/struct.StateFromPeopleNowPresent.html' title='spaceapi_server::modifiers::StateFromPeopleNowPresent'>StateFromPeopleNowPresent</a></code></h3><div class='impl-items'><h4 id='method.modify' class='method'><code>fn <a href='../../spaceapi_server/modifiers/trait.StatusModifier.html#method.modify' class='fnname'>modify</a>(&amp;self, status: &amp;mut <a class='struct' href='../../spaceapi_server/api/struct.Status.html' title='spaceapi_server::api::Status'>Status</a>)</code></h4>
 </div></section>
     <section id='search' class="content hidden"></section>
 

@@ -254,10 +254,6 @@
 <span id="212">212</span>
 <span id="213">213</span>
 <span id="214">214</span>
-<span id="215">215</span>
-<span id="216">216</span>
-<span id="217">217</span>
-<span id="218">218</span>
 </pre><pre class='rust '>
 <span class='doccomment'>//! Handlers for the server.</span>
 
@@ -275,6 +271,7 @@
 <span class='kw'>use</span> ::<span class='ident'>api</span>::<span class='ident'>optional</span>::<span class='ident'>Optional</span>;
 <span class='kw'>use</span> ::<span class='ident'>datastore</span>;
 <span class='kw'>use</span> ::<span class='ident'>sensors</span>;
+<span class='kw'>use</span> ::<span class='ident'>modifiers</span>;
 
 
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>)]</span>
@@ -292,19 +289,24 @@
     }
 }
 
-
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>ReadHandler</span> {
     <span class='ident'>status</span>: <span class='ident'>api</span>::<span class='ident'>Status</span>,
     <span class='ident'>datastore</span>: <span class='ident'>datastore</span>::<span class='ident'>SafeDataStore</span>,
     <span class='ident'>sensor_specs</span>: <span class='ident'>sensors</span>::<span class='ident'>SafeSensorSpecs</span>,
+    <span class='ident'>status_modifiers</span>: <span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>Box</span><span class='op'>&lt;</span><span class='ident'>modifiers</span>::<span class='ident'>StatusModifier</span><span class='op'>&gt;&gt;</span>,
 }
 
 <span class='kw'>impl</span> <span class='ident'>ReadHandler</span> {
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>new</span>(<span class='ident'>status</span>: <span class='ident'>api</span>::<span class='ident'>Status</span>, <span class='ident'>datastore</span>: <span class='ident'>datastore</span>::<span class='ident'>SafeDataStore</span>, <span class='ident'>sensor_specs</span>: <span class='ident'>sensors</span>::<span class='ident'>SafeSensorSpecs</span>) <span class='op'>-&gt;</span> <span class='ident'>ReadHandler</span> {
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>new</span>(<span class='ident'>status</span>: <span class='ident'>api</span>::<span class='ident'>Status</span>,
+               <span class='ident'>datastore</span>: <span class='ident'>datastore</span>::<span class='ident'>SafeDataStore</span>,
+               <span class='ident'>sensor_specs</span>: <span class='ident'>sensors</span>::<span class='ident'>SafeSensorSpecs</span>,
+               <span class='ident'>status_modifiers</span>: <span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>Box</span><span class='op'>&lt;</span><span class='ident'>modifiers</span>::<span class='ident'>StatusModifier</span><span class='op'>&gt;&gt;</span>)
+               <span class='op'>-&gt;</span> <span class='ident'>ReadHandler</span> {
         <span class='ident'>ReadHandler</span> {
             <span class='ident'>status</span>: <span class='ident'>status</span>,
             <span class='ident'>datastore</span>: <span class='ident'>datastore</span>,
             <span class='ident'>sensor_specs</span>: <span class='ident'>sensor_specs</span>,
+            <span class='ident'>status_modifiers</span>: <span class='ident'>status_modifiers</span>,
         }
     }
 
@@ -326,18 +328,8 @@
             });
         }
 
-        <span class='comment'>// Update state depending on number of people present</span>
-        <span class='kw'>let</span> <span class='ident'>people_now_present</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>u64</span><span class='op'>&gt;</span> <span class='op'>=</span> <span class='ident'>status_copy</span>.<span class='ident'>sensors</span>.<span class='ident'>as_ref</span>()
-            .<span class='ident'>and_then</span>(<span class='op'>|</span><span class='ident'>sensors</span><span class='op'>|</span> <span class='ident'>sensors</span>.<span class='ident'>people_now_present</span>.<span class='ident'>as_ref</span>())
-            .<span class='ident'>map</span>(<span class='op'>|</span><span class='ident'>people_now_present</span><span class='op'>|</span> <span class='ident'>people_now_present</span>[<span class='number'>0</span>].<span class='ident'>value</span>)
-            .<span class='ident'>into</span>();
-        <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='ident'>count</span>) <span class='op'>=</span> <span class='ident'>people_now_present</span> {
-            <span class='ident'>status_copy</span>.<span class='ident'>state</span>.<span class='ident'>open</span> <span class='op'>=</span> <span class='prelude-val'>Some</span>(<span class='ident'>count</span> <span class='op'>&gt;</span> <span class='number'>0</span>);
-            <span class='kw'>if</span> <span class='ident'>count</span> <span class='op'>==</span> <span class='number'>1</span> {
-                <span class='ident'>status_copy</span>.<span class='ident'>state</span>.<span class='ident'>message</span> <span class='op'>=</span> <span class='ident'>Optional</span>::<span class='ident'>Value</span>(<span class='macro'>format</span><span class='macro'>!</span>(<span class='string'>&quot;{} person here right now&quot;</span>, <span class='ident'>count</span>));
-            } <span class='kw'>else</span> <span class='kw'>if</span> <span class='ident'>count</span> <span class='op'>&gt;</span> <span class='number'>1</span> {
-                <span class='ident'>status_copy</span>.<span class='ident'>state</span>.<span class='ident'>message</span> <span class='op'>=</span> <span class='ident'>Optional</span>::<span class='ident'>Value</span>(<span class='macro'>format</span><span class='macro'>!</span>(<span class='string'>&quot;{} people here right now&quot;</span>, <span class='ident'>count</span>));
-            }
+        <span class='kw'>for</span> <span class='ident'>status_modifier</span> <span class='kw'>in</span> <span class='self'>self</span>.<span class='ident'>status_modifiers</span>.<span class='ident'>iter</span>() {
+            <span class='ident'>status_modifier</span>.<span class='ident'>modify</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>status_copy</span>);
         }
 
         <span class='comment'>// Serialize to JSON</span>
