@@ -318,6 +318,37 @@
 <span id="276">276</span>
 <span id="277">277</span>
 <span id="278">278</span>
+<span id="279">279</span>
+<span id="280">280</span>
+<span id="281">281</span>
+<span id="282">282</span>
+<span id="283">283</span>
+<span id="284">284</span>
+<span id="285">285</span>
+<span id="286">286</span>
+<span id="287">287</span>
+<span id="288">288</span>
+<span id="289">289</span>
+<span id="290">290</span>
+<span id="291">291</span>
+<span id="292">292</span>
+<span id="293">293</span>
+<span id="294">294</span>
+<span id="295">295</span>
+<span id="296">296</span>
+<span id="297">297</span>
+<span id="298">298</span>
+<span id="299">299</span>
+<span id="300">300</span>
+<span id="301">301</span>
+<span id="302">302</span>
+<span id="303">303</span>
+<span id="304">304</span>
+<span id="305">305</span>
+<span id="306">306</span>
+<span id="307">307</span>
+<span id="308">308</span>
+<span id="309">309</span>
 </pre><pre class='rust '>
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>collections</span>::<span class='ident'>BTreeMap</span>;
 <span class='kw'>use</span> <span class='ident'>rustc_serialize</span>::<span class='ident'>json</span>::{<span class='ident'>Json</span>, <span class='ident'>ToJson</span>};
@@ -326,27 +357,27 @@
 <span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>sensors</span>::{<span class='ident'>TemperatureSensor</span>, <span class='ident'>PeopleNowPresentSensor</span>};
 
 
-<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Clone</span>)]</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Clone</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Location</span> {
     <span class='kw'>pub</span> <span class='ident'>address</span>: <span class='ident'>Optional</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
     <span class='kw'>pub</span> <span class='ident'>lat</span>: <span class='ident'>f64</span>,
     <span class='kw'>pub</span> <span class='ident'>lon</span>: <span class='ident'>f64</span>,
 }
 
-<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Clone</span>)]</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Clone</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Spacefed</span> {
     <span class='kw'>pub</span> <span class='ident'>spacenet</span>: <span class='ident'>bool</span>,
     <span class='kw'>pub</span> <span class='ident'>spacesaml</span>: <span class='ident'>bool</span>,
     <span class='kw'>pub</span> <span class='ident'>spacephone</span>: <span class='ident'>bool</span>,
 }
 
-<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Clone</span>)]</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Clone</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Icon</span> {
     <span class='kw'>pub</span> <span class='ident'>open</span>: <span class='ident'>String</span>,
     <span class='kw'>pub</span> <span class='ident'>close</span>: <span class='ident'>String</span>,
 }
 
-<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Clone</span>)]</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Clone</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>State</span> {
     <span class='kw'>pub</span> <span class='ident'>open</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>bool</span><span class='op'>&gt;</span>,
     <span class='kw'>pub</span> <span class='ident'>lastchange</span>: <span class='ident'>Optional</span><span class='op'>&lt;</span><span class='ident'>u64</span><span class='op'>&gt;</span>,
@@ -355,7 +386,7 @@
     <span class='kw'>pub</span> <span class='ident'>icon</span>: <span class='ident'>Optional</span><span class='op'>&lt;</span><span class='ident'>Icon</span><span class='op'>&gt;</span>,
 }
 
-<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Clone</span>)]</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Clone</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Event</span> {
     <span class='kw'>pub</span> <span class='ident'>name</span>: <span class='ident'>String</span>,
     <span class='kw'>pub</span> <span class='ident'>_type</span>: <span class='ident'>String</span>,
@@ -363,7 +394,7 @@
     <span class='kw'>pub</span> <span class='ident'>extra</span>: <span class='ident'>Optional</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
 }
 
-<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Clone</span>)]</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Clone</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Contact</span> {
     <span class='kw'>pub</span> <span class='ident'>irc</span>: <span class='ident'>Optional</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
     <span class='kw'>pub</span> <span class='ident'>twitter</span>: <span class='ident'>Optional</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
@@ -371,13 +402,13 @@
     <span class='kw'>pub</span> <span class='ident'>email</span>: <span class='ident'>Optional</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
 }
 
-<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Clone</span>)]</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Clone</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Feed</span> {
     <span class='kw'>pub</span> <span class='ident'>_type</span>: <span class='ident'>Optional</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
     <span class='kw'>pub</span> <span class='ident'>url</span>: <span class='ident'>String</span>,
 }
 
-<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Clone</span>)]</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Clone</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Feeds</span> {
     <span class='kw'>pub</span> <span class='ident'>blog</span>: <span class='ident'>Optional</span><span class='op'>&lt;</span><span class='ident'>Feed</span><span class='op'>&gt;</span>,
     <span class='kw'>pub</span> <span class='ident'>wiki</span>: <span class='ident'>Optional</span><span class='op'>&lt;</span><span class='ident'>Feed</span><span class='op'>&gt;</span>,
@@ -385,12 +416,12 @@
     <span class='kw'>pub</span> <span class='ident'>flickr</span>: <span class='ident'>Optional</span><span class='op'>&lt;</span><span class='ident'>Feed</span><span class='op'>&gt;</span>,
 }
 
-<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Clone</span>)]</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Clone</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Cache</span> {
     <span class='kw'>pub</span> <span class='ident'>schedule</span>: <span class='ident'>String</span>,
 }
 
-<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Clone</span>)]</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Clone</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>RadioShow</span> {
     <span class='kw'>pub</span> <span class='ident'>name</span>: <span class='ident'>String</span>,
     <span class='kw'>pub</span> <span class='ident'>url</span>: <span class='ident'>String</span>,
@@ -400,11 +431,11 @@
 }
 
 <span class='doccomment'>/// The main Space API status object.</span>
-<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Clone</span>)]</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Clone</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Status</span> {
 
     <span class='comment'>// Hackerspace properties</span>
-    <span class='kw'>pub</span> <span class='ident'>api</span>: <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;static</span> <span class='ident'>str</span>,
+    <span class='kw'>pub</span> <span class='ident'>api</span>: <span class='ident'>String</span>,
     <span class='kw'>pub</span> <span class='ident'>space</span>: <span class='ident'>String</span>,
     <span class='kw'>pub</span> <span class='ident'>logo</span>: <span class='ident'>String</span>,
     <span class='kw'>pub</span> <span class='ident'>url</span>: <span class='ident'>String</span>,
@@ -433,7 +464,7 @@
     <span class='doccomment'>/// Create a new Status object with only the absolutely required fields.</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>new</span><span class='op'>&lt;</span><span class='ident'>S</span>: <span class='ident'>Into</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;&gt;</span>(<span class='ident'>space</span>: <span class='ident'>S</span>, <span class='ident'>logo</span>: <span class='ident'>S</span>, <span class='ident'>url</span>: <span class='ident'>S</span>, <span class='ident'>location</span>: <span class='ident'>Location</span>, <span class='ident'>contact</span>: <span class='ident'>Contact</span>, <span class='ident'>issue_report_channels</span>: <span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>) <span class='op'>-&gt;</span> <span class='ident'>Status</span> {
         <span class='ident'>Status</span> {
-            <span class='ident'>api</span>: <span class='string'>&quot;0.13&quot;</span>,
+            <span class='ident'>api</span>: <span class='string'>&quot;0.13&quot;</span>.<span class='ident'>into</span>(),
             <span class='ident'>space</span>: <span class='ident'>space</span>.<span class='ident'>into</span>(),
             <span class='ident'>logo</span>: <span class='ident'>logo</span>.<span class='ident'>into</span>(),
             <span class='ident'>url</span>: <span class='ident'>url</span>.<span class='ident'>into</span>(),
@@ -596,6 +627,37 @@
         <span class='ident'>d</span>.<span class='ident'>insert</span>(<span class='string'>&quot;start&quot;</span>.<span class='ident'>to_string</span>(), <span class='self'>self</span>.<span class='ident'>start</span>.<span class='ident'>to_json</span>()); <span class='ident'>d</span>.<span class='ident'>insert</span>(<span class='string'>&quot;end&quot;</span>.<span class='ident'>to_string</span>(), <span class='self'>self</span>.<span class='ident'>end</span>.<span class='ident'>to_json</span>());
         <span class='ident'>Json</span>::<span class='ident'>Object</span>(<span class='ident'>d</span>)
     }
+}
+
+<span class='attribute'>#[<span class='ident'>cfg</span>(<span class='ident'>test</span>)]</span>
+<span class='kw'>mod</span> <span class='ident'>test</span> {
+  <span class='kw'>use</span> <span class='ident'>super</span>::<span class='op'>*</span>;
+  <span class='kw'>use</span> <span class='ident'>optional</span>::<span class='ident'>Optional</span>::<span class='op'>*</span>;
+  <span class='kw'>use</span> <span class='ident'>rustc_serialize</span>::<span class='ident'>json</span>::{<span class='self'>self</span>, <span class='ident'>ToJson</span>};
+  
+  <span class='attribute'>#[<span class='ident'>test</span>]</span>
+  <span class='kw'>fn</span> <span class='ident'>serialize_deserialize_cache</span>() {
+    <span class='kw'>let</span> <span class='ident'>a</span> :<span class='ident'>Cache</span> <span class='op'>=</span> <span class='ident'>Cache</span>{ <span class='ident'>schedule</span>: <span class='macro'>format</span><span class='macro'>!</span>(<span class='string'>&quot;bla&quot;</span>) };
+    <span class='kw'>let</span> <span class='ident'>b</span> :<span class='ident'>Cache</span> <span class='op'>=</span> <span class='ident'>json</span>::<span class='ident'>decode</span>( <span class='kw-2'>&amp;</span> <span class='ident'>a</span>.<span class='ident'>to_json</span>().<span class='ident'>to_string</span>() ).<span class='ident'>unwrap</span>();
+    
+    <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>a</span>.<span class='ident'>schedule</span>, <span class='ident'>b</span>.<span class='ident'>schedule</span>);
+  }
+  
+  <span class='attribute'>#[<span class='ident'>test</span>]</span>
+  <span class='kw'>fn</span> <span class='ident'>serialize_deserialize_contact</span>() {
+    <span class='kw'>let</span> <span class='ident'>a</span> :<span class='ident'>Contact</span> <span class='op'>=</span> <span class='ident'>Contact</span>{ 
+      <span class='ident'>irc</span>: <span class='ident'>Value</span>(<span class='macro'>format</span><span class='macro'>!</span>(<span class='string'>&quot;bla&quot;</span>)),
+      <span class='ident'>twitter</span>: <span class='ident'>Absent</span>,
+      <span class='ident'>foursquare</span>: <span class='ident'>Absent</span>,
+      <span class='ident'>email</span>: <span class='ident'>Value</span>(<span class='macro'>format</span><span class='macro'>!</span>(<span class='string'>&quot;bli@bla&quot;</span>)),
+    };
+    <span class='kw'>let</span> <span class='ident'>b</span> :<span class='ident'>Contact</span> <span class='op'>=</span> <span class='ident'>json</span>::<span class='ident'>decode</span>( <span class='kw-2'>&amp;</span> <span class='ident'>a</span>.<span class='ident'>to_json</span>().<span class='ident'>to_string</span>() ).<span class='ident'>unwrap</span>();
+    
+    <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>a</span>.<span class='ident'>irc</span>, <span class='ident'>b</span>.<span class='ident'>irc</span>);
+    <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>a</span>.<span class='ident'>twitter</span>, <span class='ident'>b</span>.<span class='ident'>twitter</span>);
+    <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>a</span>.<span class='ident'>foursquare</span>, <span class='ident'>b</span>.<span class='ident'>foursquare</span>);
+    <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>a</span>.<span class='ident'>email</span>, <span class='ident'>b</span>.<span class='ident'>email</span>);
+  }
 }
 </pre>
 </section>

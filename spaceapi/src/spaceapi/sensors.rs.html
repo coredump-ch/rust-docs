@@ -270,7 +270,7 @@
 
 <span class='comment'>//--- Structures ---//</span>
 
-<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Clone</span>)]</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Clone</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>PeopleNowPresentSensor</span> {
     <span class='kw'>pub</span> <span class='ident'>location</span>: <span class='ident'>Optional</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
     <span class='kw'>pub</span> <span class='ident'>name</span>: <span class='ident'>Optional</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
@@ -279,7 +279,7 @@
     <span class='kw'>pub</span> <span class='ident'>value</span>: <span class='ident'>u64</span>,
 }
 
-<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Clone</span>)]</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Clone</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>TemperatureSensor</span> {
     <span class='kw'>pub</span> <span class='ident'>unit</span>: <span class='ident'>String</span>,
     <span class='kw'>pub</span> <span class='ident'>location</span>: <span class='ident'>String</span>,
@@ -288,7 +288,7 @@
     <span class='kw'>pub</span> <span class='ident'>value</span>: <span class='ident'>f64</span>,
 }
 
-<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Clone</span>)]</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Clone</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Sensors</span> {
     <span class='kw'>pub</span> <span class='ident'>people_now_present</span>: <span class='ident'>Optional</span><span class='op'>&lt;</span><span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>PeopleNowPresentSensor</span><span class='op'>&gt;&gt;</span>,
     <span class='kw'>pub</span> <span class='ident'>temperature</span>: <span class='ident'>Optional</span><span class='op'>&lt;</span><span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>TemperatureSensor</span><span class='op'>&gt;&gt;</span>,
