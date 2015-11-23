@@ -232,14 +232,16 @@
 <span id="190">190</span>
 <span id="191">191</span>
 <span id="192">192</span>
+<span id="193">193</span>
 </pre><pre class='rust '>
-<span class='doccomment'>//! Useful stuff related to the spaceapi.</span>
+<span class='doccomment'>//! Implementation of the custom `Optional` type. See `Optional`</span>
+<span class='doccomment'>//! docs for more information.</span>
 
 <span class='kw'>use</span> <span class='ident'>rustc_serialize</span>::{<span class='ident'>Decodable</span>, <span class='ident'>Decoder</span>};
 
-<span class='doccomment'>/// An ``Optional`` can contain ``Optional::Value&lt;T&gt;`` or ``Optional::Absent``.</span>
-<span class='doccomment'>/// It is similar to an ``Option``, but ``Optional::Absent`` means it will be</span>
-<span class='doccomment'>/// omitted when serialized, while ``None`` will be serialized to ``null``.</span>
+<span class='doccomment'>/// An `Optional` can contain either `Value&lt;T&gt;` or `Absent`.</span>
+<span class='doccomment'>/// It is similar to an `Option`, but `None` will be serialized to `null`</span>
+<span class='doccomment'>/// while `Absent` means the value will be omitted when serialized.</span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Clone</span>, <span class='ident'>Copy</span>, <span class='ident'>PartialEq</span>, <span class='ident'>PartialOrd</span>, <span class='ident'>Eq</span>, <span class='ident'>Ord</span>, <span class='ident'>Debug</span>, <span class='ident'>Hash</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>Optional</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span> {
     <span class='ident'>Value</span>(<span class='ident'>T</span>),

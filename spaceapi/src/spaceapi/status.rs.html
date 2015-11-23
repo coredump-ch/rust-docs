@@ -349,12 +349,16 @@
 <span id="307">307</span>
 <span id="308">308</span>
 <span id="309">309</span>
+<span id="310">310</span>
+<span id="311">311</span>
 </pre><pre class='rust '>
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>collections</span>::<span class='ident'>BTreeMap</span>;
 <span class='kw'>use</span> <span class='ident'>rustc_serialize</span>::<span class='ident'>json</span>::{<span class='ident'>Json</span>, <span class='ident'>ToJson</span>};
 <span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>optional</span>::<span class='ident'>Optional</span>;
-<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>sensors</span>::{<span class='ident'>SensorTemplate</span>, <span class='ident'>Sensors</span>};
-<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>sensors</span>::{<span class='ident'>TemperatureSensor</span>, <span class='ident'>PeopleNowPresentSensor</span>};
+<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>sensors</span>::<span class='ident'>SensorTemplate</span>;
+<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>sensors</span>::<span class='ident'>Sensors</span>;
+<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>sensors</span>::<span class='ident'>TemperatureSensor</span>;
+<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>sensors</span>::<span class='ident'>PeopleNowPresentSensor</span>;
 
 
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Clone</span>, <span class='ident'>RustcDecodable</span>)]</span>

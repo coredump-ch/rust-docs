@@ -96,6 +96,33 @@
 <span id="54">54</span>
 <span id="55">55</span>
 <span id="56">56</span>
+<span id="57">57</span>
+<span id="58">58</span>
+<span id="59">59</span>
+<span id="60">60</span>
+<span id="61">61</span>
+<span id="62">62</span>
+<span id="63">63</span>
+<span id="64">64</span>
+<span id="65">65</span>
+<span id="66">66</span>
+<span id="67">67</span>
+<span id="68">68</span>
+<span id="69">69</span>
+<span id="70">70</span>
+<span id="71">71</span>
+<span id="72">72</span>
+<span id="73">73</span>
+<span id="74">74</span>
+<span id="75">75</span>
+<span id="76">76</span>
+<span id="77">77</span>
+<span id="78">78</span>
+<span id="79">79</span>
+<span id="80">80</span>
+<span id="81">81</span>
+<span id="82">82</span>
+<span id="83">83</span>
 </pre><pre class='rust '>
 <span class='doccomment'>//! Space API definitions and serialization.</span>
 <span class='doccomment'>//!</span>
@@ -108,15 +135,20 @@
 <span class='doccomment'>//!</span>
 <span class='doccomment'>//! # Examples</span>
 <span class='doccomment'>//!</span>
-<span class='doccomment'>//! You can create a new ``Status`` instance by using the ``new()`` constructor method. To serialize</span>
-<span class='doccomment'>//! this to [``Json``](http://doc.rust-lang.org/rustc-serialize/rustc_serialize/json/enum.Json.html), use</span>
+<span class='doccomment'>//! ## Serializing</span>
+<span class='doccomment'>//!</span>
+<span class='doccomment'>//! You can create a new `Status` instance by using the `new()` constructor method.</span>
+<span class='doccomment'>//!</span>
+<span class='doccomment'>//! To serialize the status to</span>
+<span class='doccomment'>//! [`Json`](http://doc.rust-lang.org/rustc-serialize/rustc_serialize/json/enum.Json.html), use</span>
 <span class='doccomment'>//! the [`ToJson`](http://doc.rust-lang.org/rustc-serialize/rustc_serialize/json/trait.ToJson.html)</span>
 <span class='doccomment'>//! trait implementation. You can then create a string from the resulting object.</span>
 <span class='doccomment'>//!</span>
-<span class='doccomment'>//!     # extern crate rustc_serialize;</span>
-<span class='doccomment'>//!     # extern crate spaceapi;</span>
-<span class='doccomment'>//!     # use spaceapi::{Status, Location, Contact};</span>
-<span class='doccomment'>//!     # use spaceapi::optional::Optional;</span>
+<span class='doccomment'>//!     extern crate rustc_serialize;</span>
+<span class='doccomment'>//!     extern crate spaceapi;</span>
+<span class='doccomment'>//!</span>
+<span class='doccomment'>//!     use spaceapi::{Status, Location, Contact};</span>
+<span class='doccomment'>//!     use spaceapi::optional::Optional;</span>
 <span class='doccomment'>//!     use rustc_serialize::json::ToJson;</span>
 <span class='doccomment'>//!</span>
 <span class='doccomment'>//!     # fn main() {</span>
@@ -125,7 +157,8 @@
 <span class='doccomment'>//!         &quot;https://www.coredump.ch/logo.png&quot;,</span>
 <span class='doccomment'>//!         &quot;https://www.coredump.ch/&quot;,</span>
 <span class='doccomment'>//!         Location {</span>
-<span class='doccomment'>//!             address: Optional::Value(&quot;Spinnereistrasse 2, 8640 Rapperswil, Switzerland&quot;.into()),</span>
+<span class='doccomment'>//!             address: Optional::Value(</span>
+<span class='doccomment'>//!                 &quot;Spinnereistrasse 2, 8640 Rapperswil, Switzerland&quot;.into()),</span>
 <span class='doccomment'>//!             lat: 47.22936,</span>
 <span class='doccomment'>//!             lon: 8.82949,</span>
 <span class='doccomment'>//!         },</span>
@@ -143,6 +176,27 @@
 <span class='doccomment'>//!</span>
 <span class='doccomment'>//!     let jsonstatus = status.to_json();</span>
 <span class='doccomment'>//!     let stringstatus = jsonstatus.to_string();</span>
+<span class='doccomment'>//!</span>
+<span class='doccomment'>//!     # assert!(&amp;stringstatus[0..1] == &quot;{&quot;);</span>
+<span class='doccomment'>//!     # }</span>
+<span class='doccomment'>//!</span>
+<span class='doccomment'>//! ## Deserializing</span>
+<span class='doccomment'>//!</span>
+<span class='doccomment'>//! You can deserialize any struct of the Space API through `rustc_serialize::json`:</span>
+<span class='doccomment'>//!</span>
+<span class='doccomment'>//!     extern crate rustc_serialize;</span>
+<span class='doccomment'>//!     extern crate spaceapi;</span>
+<span class='doccomment'>//!</span>
+<span class='doccomment'>//!     use rustc_serialize::json;</span>
+<span class='doccomment'>//!     use spaceapi::Location;</span>
+<span class='doccomment'>//!</span>
+<span class='doccomment'>//!     # fn main() {</span>
+<span class='doccomment'>//!     let location = &quot;{\&quot;lat\&quot;: 47.22936, \&quot;lon\&quot;: 8.82949}&quot;;</span>
+<span class='doccomment'>//!     let decoded: Location = json::decode(location).unwrap();</span>
+<span class='doccomment'>//!     println!(&quot;{:?}&quot;, decoded);</span>
+<span class='doccomment'>//!</span>
+<span class='doccomment'>//!     // Output:</span>
+<span class='doccomment'>//!     // Location { address: Absent, lat: 47.22936000000001, lon: 8.829490000000002 }</span>
 <span class='doccomment'>//!     # }</span>
 
 <span class='attribute'>#[<span class='ident'>macro_use</span>]</span>

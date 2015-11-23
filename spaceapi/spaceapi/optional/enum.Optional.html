@@ -45,13 +45,13 @@
             <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                 [<span class='inner'>&#x2212;</span>]
             </a>
-        </span><a id='src-11' class='srclink' href='../../src/spaceapi/optional.rs.html#9-12' title='goto source code'>[src]</a></span></h1>
+        </span><a id='src-11' class='srclink' href='../../src/spaceapi/optional.rs.html#10-13' title='goto source code'>[src]</a></span></h1>
 <pre class='rust enum'>pub enum Optional&lt;T&gt; {
     Value(T),
     Absent,
-}</pre><div class='docblock'><p>An <code>Optional</code> can contain <code>Optional::Value&lt;T&gt;</code> or <code>Optional::Absent</code>.
-It is similar to an <code>Option</code>, but <code>Optional::Absent</code> means it will be
-omitted when serialized, while <code>None</code> will be serialized to <code>null</code>.</p>
+}</pre><div class='docblock'><p>An <code>Optional</code> can contain either <code>Value&lt;T&gt;</code> or <code>Absent</code>.
+It is similar to an <code>Option</code>, but <code>None</code> will be serialized to <code>null</code>
+while <code>Absent</code> means the value will be omitted when serialized.</p>
 </div><h2 class='variants'>Variants</h2>
 <table><tr><td id='variant.Value'><code>Value</code></td><td></td></tr><tr><td id='variant.Absent'><code>Absent</code></td><td></td></tr></table><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl&lt;T&gt; <a class='enum' href='../../spaceapi/optional/enum.Optional.html' title='spaceapi::optional::Optional'>Optional</a>&lt;T&gt;</code></h3><div class='impl-items'><h4 id='method.unwrap' class='method'><code>fn <a href='#method.unwrap' class='fnname'>unwrap</a>(self) -&gt; T</code></h4>
 <div class='docblock'><p>Moves the value <code>v</code> out of the <code>Optional&lt;T&gt;</code> if it is <code>Value(v)</code>.</p>

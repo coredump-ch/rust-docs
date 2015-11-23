@@ -45,17 +45,18 @@
             <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                 [<span class='inner'>&#x2212;</span>]
             </a>
-        </span><a id='src-6' class='srclink' href='../../src/spaceapi/optional.rs.html#1-192' title='goto source code'>[src]</a></span></h1>
-<div class='docblock'><p>Useful stuff related to the spaceapi.</p>
+        </span><a id='src-6' class='srclink' href='../../src/spaceapi/optional.rs.html#1-193' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>Implementation of the custom <code>Optional</code> type. See <code>Optional</code>
+docs for more information.</p>
 </div><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
 <table>
                     <tr class=' module-item'>
                         <td><a class='enum' href='enum.Optional.html'
                                title='spaceapi::optional::Optional'>Optional</a></td>
                         <td class='docblock short'>
-                             <p>An <code>Optional</code> can contain <code>Optional::Value&lt;T&gt;</code> or <code>Optional::Absent</code>.
-It is similar to an <code>Option</code>, but <code>Optional::Absent</code> means it will be
-omitted when serialized, while <code>None</code> will be serialized to <code>null</code>.</p>
+                             <p>An <code>Optional</code> can contain either <code>Value&lt;T&gt;</code> or <code>Absent</code>.
+It is similar to an <code>Option</code>, but <code>None</code> will be serialized to <code>null</code>
+while <code>Absent</code> means the value will be omitted when serialized.</p>
 
                         </td>
                     </tr>
