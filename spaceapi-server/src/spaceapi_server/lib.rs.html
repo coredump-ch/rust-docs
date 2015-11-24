@@ -59,6 +59,9 @@
 <span id="17">17</span>
 <span id="18">18</span>
 <span id="19">19</span>
+<span id="20">20</span>
+<span id="21">21</span>
+<span id="22">22</span>
 </pre><pre class='rust '>
 <span class='doccomment'>//! The main entry point for the Space API server.</span>
 <span class='doccomment'>//!</span>
@@ -70,15 +73,18 @@
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>iron</span>;
 <span class='attribute'>#[<span class='ident'>macro_use</span>]</span> <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>router</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>urlencoded</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>redis</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>spaceapi</span>;
 
 <span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>spaceapi</span> <span class='kw'>as</span> <span class='ident'>api</span>;
-<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>server</span>::<span class='ident'>SpaceapiServer</span>;
 
 <span class='kw'>mod</span> <span class='ident'>server</span>;
-<span class='kw'>pub</span> <span class='kw'>mod</span> <span class='ident'>datastore</span>;
+<span class='kw'>mod</span> <span class='ident'>errors</span>;
 <span class='kw'>pub</span> <span class='kw'>mod</span> <span class='ident'>sensors</span>;
 <span class='kw'>pub</span> <span class='kw'>mod</span> <span class='ident'>modifiers</span>;
+
+<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>server</span>::<span class='ident'>SpaceapiServer</span>;
+<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>errors</span>::<span class='ident'>SpaceapiServerError</span>;
 </pre>
 </section>
     <section id='search' class="content hidden"></section>

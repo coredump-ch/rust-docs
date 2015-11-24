@@ -45,19 +45,21 @@
             <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                 [<span class='inner'>&#x2212;</span>]
             </a>
-        </span><a id='src-2439' class='srclink' href='../../src/spaceapi_server/sensors.rs.html#12-15' title='goto source code'>[src]</a></span></h1>
+        </span><a id='src-1558' class='srclink' href='../../src/spaceapi_server/sensors.rs.html#14-17' title='goto source code'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct SensorSpec {
     pub template: <a class='struct' href='https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html' title='alloc::boxed::Box'>Box</a>&lt;<a class='trait' href='../../spaceapi_server/api/trait.SensorTemplate.html' title='spaceapi_server::api::SensorTemplate'>SensorTemplate</a>&gt;,
     pub data_key: <a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>,
 }</pre><div class='docblock'><p>A specification of a sensor.</p>
 
 <p>The <code>template</code> field contains the static data of a sensor and
-the <code>data_key</code> says how to find the sensor value in the datastore.</p>
+the <code>data_key</code> says how to find the sensor value in Redis.</p>
 </div><h2 class='fields'>Fields</h2>
 <table><tr class='stab '>
                                   <td id='structfield.template'><code>template</code></td><td></td></tr><tr class='stab '>
-                                  <td id='structfield.data_key'><code>data_key</code></td><td></td></tr></table><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl <a class='struct' href='../../spaceapi_server/sensors/struct.SensorSpec.html' title='spaceapi_server::sensors::SensorSpec'>SensorSpec</a></code></h3><div class='impl-items'><h4 id='method.get_sensor_value' class='method'><code>fn <a href='#method.get_sensor_value' class='fnname'>get_sensor_value</a>(&amp;self, datastore: <a class='type' href='../../spaceapi_server/datastore/type.SafeDataStore.html' title='spaceapi_server::datastore::SafeDataStore'>SafeDataStore</a>) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;</code></h4>
-<div class='docblock'><p>Retrieve sensor value from the datastore.</p>
+                                  <td id='structfield.data_key'><code>data_key</code></td><td></td></tr></table><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl <a class='struct' href='../../spaceapi_server/sensors/struct.SensorSpec.html' title='spaceapi_server::sensors::SensorSpec'>SensorSpec</a></code></h3><div class='impl-items'><h4 id='method.get_sensor_value' class='method'><code>fn <a href='#method.get_sensor_value' class='fnname'>get_sensor_value</a>(&amp;self, redis_connection_info: &amp;ConnectionInfo) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>, <a class='enum' href='../../spaceapi_server/sensors/enum.SensorError.html' title='spaceapi_server::sensors::SensorError'>SensorError</a>&gt;</code></h4>
+<div class='docblock'><p>Retrieve sensor value from Redis.</p>
+</div><h4 id='method.set_sensor_value' class='method'><code>fn <a href='#method.set_sensor_value' class='fnname'>set_sensor_value</a>(&amp;self, redis_connection_info: &amp;ConnectionInfo, value: &amp;<a href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>, <a class='enum' href='../../spaceapi_server/sensors/enum.SensorError.html' title='spaceapi_server::sensors::SensorError'>SensorError</a>&gt;</code></h4>
+<div class='docblock'><p>Set sensor value in Redis.</p>
 </div></div></section>
     <section id='search' class="content hidden"></section>
 

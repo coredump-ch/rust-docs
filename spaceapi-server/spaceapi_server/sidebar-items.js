@@ -1,1 +1,1 @@
-initSidebarItems({"mod":[["api",""],["datastore","Data store related stuff."],["modifiers",""],["sensors","Sensor related stuff."]],"struct":[["SpaceapiServer","A Space API server instance."]]});
+initSidebarItems({"enum":[["SpaceapiServerError",""]],"mod":[["api",""],["modifiers",""],["sensors","Sensor related stuff."]],"struct":[["SpaceapiServer","A Space API server instance."]]});

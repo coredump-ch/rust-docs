@@ -254,6 +254,7 @@
 <span id="212">212</span>
 <span id="213">213</span>
 <span id="214">214</span>
+<span id="215">215</span>
 </pre><pre class='rust '>
 <span class='doccomment'>//! Handlers for the server.</span>
 
@@ -264,12 +265,12 @@
 <span class='kw'>use</span> <span class='ident'>iron</span>::{<span class='ident'>status</span>, <span class='ident'>headers</span>, <span class='ident'>middleware</span>};
 <span class='kw'>use</span> <span class='ident'>iron</span>::<span class='ident'>modifiers</span>::<span class='ident'>Header</span>;
 <span class='kw'>use</span> <span class='ident'>router</span>::<span class='ident'>Router</span>;
+<span class='kw'>use</span> <span class='ident'>redis</span>::<span class='ident'>ConnectionInfo</span>;
 
 <span class='kw'>use</span> <span class='ident'>urlencoded</span>;
 
 <span class='kw'>use</span> ::<span class='ident'>api</span>;
 <span class='kw'>use</span> ::<span class='ident'>api</span>::<span class='ident'>optional</span>::<span class='ident'>Optional</span>;
-<span class='kw'>use</span> ::<span class='ident'>datastore</span>;
 <span class='kw'>use</span> ::<span class='ident'>sensors</span>;
 <span class='kw'>use</span> ::<span class='ident'>modifiers</span>;
 
@@ -291,20 +292,20 @@
 
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>ReadHandler</span> {
     <span class='ident'>status</span>: <span class='ident'>api</span>::<span class='ident'>Status</span>,
-    <span class='ident'>datastore</span>: <span class='ident'>datastore</span>::<span class='ident'>SafeDataStore</span>,
+    <span class='ident'>redis_connection_info</span>: <span class='ident'>ConnectionInfo</span>,
     <span class='ident'>sensor_specs</span>: <span class='ident'>sensors</span>::<span class='ident'>SafeSensorSpecs</span>,
     <span class='ident'>status_modifiers</span>: <span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>Box</span><span class='op'>&lt;</span><span class='ident'>modifiers</span>::<span class='ident'>StatusModifier</span><span class='op'>&gt;&gt;</span>,
 }
 
 <span class='kw'>impl</span> <span class='ident'>ReadHandler</span> {
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>new</span>(<span class='ident'>status</span>: <span class='ident'>api</span>::<span class='ident'>Status</span>,
-               <span class='ident'>datastore</span>: <span class='ident'>datastore</span>::<span class='ident'>SafeDataStore</span>,
+               <span class='ident'>redis_connection_info</span>: <span class='ident'>ConnectionInfo</span>,
                <span class='ident'>sensor_specs</span>: <span class='ident'>sensors</span>::<span class='ident'>SafeSensorSpecs</span>,
                <span class='ident'>status_modifiers</span>: <span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>Box</span><span class='op'>&lt;</span><span class='ident'>modifiers</span>::<span class='ident'>StatusModifier</span><span class='op'>&gt;&gt;</span>)
                <span class='op'>-&gt;</span> <span class='ident'>ReadHandler</span> {
         <span class='ident'>ReadHandler</span> {
             <span class='ident'>status</span>: <span class='ident'>status</span>,
-            <span class='ident'>datastore</span>: <span class='ident'>datastore</span>,
+            <span class='ident'>redis_connection_info</span>: <span class='ident'>redis_connection_info</span>,
             <span class='ident'>sensor_specs</span>: <span class='ident'>sensor_specs</span>,
             <span class='ident'>status_modifiers</span>: <span class='ident'>status_modifiers</span>,
         }
@@ -317,15 +318,31 @@
 
         <span class='comment'>// Process registered sensors</span>
         <span class='kw'>for</span> <span class='ident'>sensor_spec</span> <span class='kw'>in</span> <span class='self'>self</span>.<span class='ident'>sensor_specs</span>.<span class='ident'>lock</span>().<span class='ident'>unwrap</span>().<span class='ident'>iter</span>() {
-            <span class='ident'>sensor_spec</span>.<span class='ident'>get_sensor_value</span>(<span class='self'>self</span>.<span class='ident'>datastore</span>.<span class='ident'>clone</span>()).<span class='ident'>map</span>(<span class='op'>|</span><span class='ident'>value</span><span class='op'>|</span> {
-                <span class='kw'>if</span> <span class='ident'>status_copy</span>.<span class='ident'>sensors</span>.<span class='ident'>is_absent</span>() {
-                    <span class='ident'>status_copy</span>.<span class='ident'>sensors</span> <span class='op'>=</span> <span class='ident'>Optional</span>::<span class='ident'>Value</span>(<span class='ident'>api</span>::<span class='ident'>Sensors</span> {
-                        <span class='ident'>people_now_present</span>: <span class='ident'>Optional</span>::<span class='ident'>Absent</span>,
-                        <span class='ident'>temperature</span>: <span class='ident'>Optional</span>::<span class='ident'>Absent</span>,
-                    });
-                }
-                <span class='ident'>sensor_spec</span>.<span class='ident'>template</span>.<span class='ident'>to_sensor</span>(<span class='kw-2'>&amp;</span><span class='ident'>value</span>, <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>status_copy</span>.<span class='ident'>sensors</span>.<span class='ident'>as_mut</span>().<span class='ident'>unwrap</span>());
-            });
+
+            <span class='kw'>match</span> <span class='ident'>sensor_spec</span>.<span class='ident'>get_sensor_value</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>.<span class='ident'>redis_connection_info</span>) {
+
+                <span class='comment'>// Value could be read successfullly</span>
+                <span class='prelude-val'>Ok</span>(<span class='ident'>value</span>) <span class='op'>=&gt;</span> {
+                    <span class='kw'>if</span> <span class='ident'>status_copy</span>.<span class='ident'>sensors</span>.<span class='ident'>is_absent</span>() {
+                        <span class='ident'>status_copy</span>.<span class='ident'>sensors</span> <span class='op'>=</span> <span class='ident'>Optional</span>::<span class='ident'>Value</span>(<span class='ident'>api</span>::<span class='ident'>Sensors</span> {
+                            <span class='ident'>people_now_present</span>: <span class='ident'>Optional</span>::<span class='ident'>Absent</span>,
+                            <span class='ident'>temperature</span>: <span class='ident'>Optional</span>::<span class='ident'>Absent</span>,
+                        });
+                    }
+                    <span class='ident'>sensor_spec</span>.<span class='ident'>template</span>.<span class='ident'>to_sensor</span>(<span class='kw-2'>&amp;</span><span class='ident'>value</span>, <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>status_copy</span>.<span class='ident'>sensors</span>.<span class='ident'>as_mut</span>().<span class='ident'>unwrap</span>());
+                },
+
+                <span class='comment'>// Value could not be read, do error logging</span>
+                <span class='prelude-val'>Err</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> {
+                    <span class='kw'>match</span> <span class='ident'>err</span> {
+                        <span class='ident'>sensors</span>::<span class='ident'>SensorError</span>::<span class='ident'>Redis</span>(<span class='ident'>e</span>) <span class='op'>=&gt;</span> {
+                            <span class='macro'>warn</span><span class='macro'>!</span>(<span class='string'>&quot;Could not retrieve key &#39;{}&#39; from Redis, omiting the sensor&quot;</span>, <span class='kw-2'>&amp;</span><span class='ident'>sensor_spec</span>.<span class='ident'>data_key</span>);
+                            <span class='macro'>debug</span><span class='macro'>!</span>(<span class='string'>&quot;Error: {:?}&quot;</span>, <span class='ident'>e</span>);
+                        },
+                        _ <span class='op'>=&gt;</span>  <span class='macro'>error</span><span class='macro'>!</span>(<span class='string'>&quot;Could not retrieve sensor &#39;{}&#39;, unknown error.&quot;</span>, <span class='kw-2'>&amp;</span><span class='ident'>sensor_spec</span>.<span class='ident'>data_key</span>)
+                    }
+                },
+            }
         }
 
         <span class='kw'>for</span> <span class='ident'>status_modifier</span> <span class='kw'>in</span> <span class='self'>self</span>.<span class='ident'>status_modifiers</span>.<span class='ident'>iter</span>() {
@@ -361,45 +378,30 @@
 
 
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>UpdateHandler</span> {
-    <span class='ident'>datastore</span>: <span class='ident'>datastore</span>::<span class='ident'>SafeDataStore</span>,
+    <span class='ident'>redis_connection_info</span>: <span class='ident'>ConnectionInfo</span>,
     <span class='ident'>sensor_specs</span>: <span class='ident'>sensors</span>::<span class='ident'>SafeSensorSpecs</span>,
 }
 
-<span class='macro'>error_type</span><span class='macro'>!</span> {
-    <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>)]</span>
-    <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>UpdateHandlerError</span> {
-        <span class='ident'>UnknownSensor</span>(<span class='ident'>String</span>) {
-            <span class='ident'>desc</span> (<span class='ident'>sensor</span>) <span class='kw-2'>&amp;</span><span class='ident'>sensor</span>;
-        },
-        <span class='ident'>DataStoreError</span>(<span class='ident'>datastore</span>::<span class='ident'>DataStoreError</span>) {
-            <span class='ident'>cause</span>;
-        }
-    }
-}
 
 <span class='kw'>impl</span> <span class='ident'>UpdateHandler</span> {
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>new</span>(<span class='ident'>datastore</span>: <span class='ident'>datastore</span>::<span class='ident'>SafeDataStore</span>, <span class='ident'>sensor_specs</span>: <span class='ident'>sensors</span>::<span class='ident'>SafeSensorSpecs</span>) <span class='op'>-&gt;</span> <span class='ident'>UpdateHandler</span> {
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>new</span>(<span class='ident'>redis_connection_info</span>: <span class='ident'>ConnectionInfo</span>, <span class='ident'>sensor_specs</span>: <span class='ident'>sensors</span>::<span class='ident'>SafeSensorSpecs</span>)
+               <span class='op'>-&gt;</span> <span class='ident'>UpdateHandler</span> {
         <span class='ident'>UpdateHandler</span> {
-            <span class='ident'>datastore</span>: <span class='ident'>datastore</span>,
+            <span class='ident'>redis_connection_info</span>: <span class='ident'>redis_connection_info</span>,
             <span class='ident'>sensor_specs</span>: <span class='ident'>sensor_specs</span>,
         }
     }
 
-    <span class='doccomment'>/// Update sensor value in the `DataStore`</span>
-    <span class='kw'>fn</span> <span class='ident'>update_sensor</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>sensor</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>, <span class='ident'>value</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span>(), <span class='ident'>UpdateHandlerError</span><span class='op'>&gt;</span> {
+    <span class='doccomment'>/// Update sensor value in Redis</span>
+    <span class='kw'>fn</span> <span class='ident'>update_sensor</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>sensor</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>, <span class='ident'>value</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span>(), <span class='ident'>sensors</span>::<span class='ident'>SensorError</span><span class='op'>&gt;</span> {
         <span class='comment'>// Validate sensor</span>
-        <span class='macro'>try</span><span class='macro'>!</span>(<span class='self'>self</span>.<span class='ident'>sensor_specs</span>.<span class='ident'>lock</span>().<span class='ident'>unwrap</span>().<span class='ident'>iter</span>()
-                              .<span class='ident'>find</span>(<span class='op'>|</span><span class='kw-2'>&amp;</span><span class='ident'>spec</span><span class='op'>|</span> <span class='ident'>spec</span>.<span class='ident'>data_key</span> <span class='op'>==</span> <span class='ident'>sensor</span>)
-                              .<span class='ident'>ok_or</span>(<span class='ident'>UpdateHandlerError</span>::<span class='ident'>UnknownSensor</span>(<span class='ident'>sensor</span>.<span class='ident'>to_string</span>())));
+        <span class='kw'>let</span> <span class='ident'>sensor_specs</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>sensor_specs</span>.<span class='ident'>lock</span>().<span class='ident'>unwrap</span>();
+        <span class='kw'>let</span> <span class='ident'>sensor_spec</span> <span class='op'>=</span> <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>sensor_specs</span>.<span class='ident'>iter</span>()
+                               .<span class='ident'>find</span>(<span class='op'>|</span><span class='kw-2'>&amp;</span><span class='ident'>spec</span><span class='op'>|</span> <span class='ident'>spec</span>.<span class='ident'>data_key</span> <span class='op'>==</span> <span class='ident'>sensor</span>)
+                               .<span class='ident'>ok_or</span>(<span class='ident'>sensors</span>::<span class='ident'>SensorError</span>::<span class='ident'>UnknownSensor</span>(<span class='ident'>sensor</span>.<span class='ident'>to_string</span>())));
 
-        <span class='comment'>// Store data to datastore</span>
-        <span class='kw'>let</span> <span class='ident'>datastore_ref</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>datastore</span>.<span class='ident'>clone</span>();
-        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>datastore_lock</span> <span class='op'>=</span> <span class='ident'>datastore_ref</span>.<span class='ident'>lock</span>().<span class='ident'>unwrap</span>();
-        <span class='ident'>datastore_lock</span>.<span class='ident'>store</span>(<span class='ident'>sensor</span>, <span class='ident'>value</span>)
-                      .<span class='ident'>map</span>(<span class='op'>|</span>_<span class='op'>|</span> ()).<span class='ident'>map_err</span>(<span class='op'>|</span><span class='ident'>e</span><span class='op'>|</span> {
-                          <span class='macro'>error</span><span class='macro'>!</span>(<span class='string'>&quot;Could not update sensor value in datastore: {:?}&quot;</span>, <span class='ident'>e</span>);
-                          <span class='ident'>UpdateHandlerError</span>::<span class='ident'>DataStoreError</span>(<span class='ident'>e</span>)
-                      })
+        <span class='comment'>// Store data</span>
+        <span class='ident'>sensor_spec</span>.<span class='ident'>set_sensor_value</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>.<span class='ident'>redis_connection_info</span>, <span class='ident'>value</span>)
     }
 
     <span class='doccomment'>/// Build an OK response with the `HTTP 204 No Content` status code.</span>
@@ -452,13 +454,13 @@
             }
         }
 
-        <span class='comment'>// Update values in datastore</span>
+        <span class='comment'>// Update values in Redis</span>
         <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Err</span>(<span class='ident'>e</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>update_sensor</span>(<span class='kw-2'>&amp;</span><span class='ident'>sensor_name</span>, <span class='kw-2'>&amp;</span><span class='ident'>sensor_value</span>) {
-            <span class='macro'>error</span><span class='macro'>!</span>(<span class='string'>&quot;update_sensor() failed: {:?}&quot;</span>, <span class='ident'>e</span>);
+            <span class='macro'>error</span><span class='macro'>!</span>(<span class='string'>&quot;Updating sensor value for sensor \&quot;{}\&quot; failed: {:?}&quot;</span>, <span class='kw-2'>&amp;</span><span class='ident'>sensor_name</span>, <span class='ident'>e</span>);
             <span class='kw'>let</span> <span class='ident'>response</span> <span class='op'>=</span> <span class='kw'>match</span> <span class='ident'>e</span> {
-                <span class='ident'>UpdateHandlerError</span>::<span class='ident'>UnknownSensor</span>(<span class='ident'>sensor</span>) <span class='op'>=&gt;</span>
+                <span class='ident'>sensors</span>::<span class='ident'>SensorError</span>::<span class='ident'>UnknownSensor</span>(<span class='ident'>sensor</span>) <span class='op'>=&gt;</span>
                     <span class='self'>self</span>.<span class='ident'>err_response</span>(<span class='ident'>status</span>::<span class='ident'>BadRequest</span>, <span class='kw-2'>&amp;</span><span class='macro'>format</span><span class='macro'>!</span>(<span class='string'>&quot;Unknown sensor: {}&quot;</span>, <span class='ident'>sensor</span>)),
-                <span class='ident'>UpdateHandlerError</span>::<span class='ident'>DataStoreError</span>(_) <span class='op'>=&gt;</span>
+                <span class='ident'>sensors</span>::<span class='ident'>SensorError</span>::<span class='ident'>Redis</span>(_) <span class='op'>=&gt;</span>
                     <span class='self'>self</span>.<span class='ident'>err_response</span>(<span class='ident'>status</span>::<span class='ident'>InternalServerError</span>, <span class='string'>&quot;Updating values in datastore failed&quot;</span>),
             };
             <span class='kw'>return</span> <span class='prelude-val'>Ok</span>(<span class='ident'>response</span>)

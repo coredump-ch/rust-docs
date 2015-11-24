@@ -1,1 +1,1 @@
-initSidebarItems({"trait":[["ErrorCause",""],["ErrorDescription",""],["ErrorDisplay",""]]});
+initSidebarItems({});

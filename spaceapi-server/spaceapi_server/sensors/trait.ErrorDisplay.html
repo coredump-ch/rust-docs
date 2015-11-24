@@ -7,9 +7,9 @@
     <meta name="description" content="API documentation for the Rust `ErrorDisplay` trait in crate `spaceapi_server`.">
     <meta name="keywords" content="rust, rustlang, rust-lang, ErrorDisplay">
 
-    <title>spaceapi_server::datastore::common::ErrorDisplay - Rust</title>
+    <title>spaceapi_server::sensors::ErrorDisplay - Rust</title>
 
-    <link rel="stylesheet" type="text/css" href="../../../main.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
 
     
     
@@ -26,7 +26,7 @@
 
     <nav class="sidebar">
         
-        <p class='location'><a href='../../index.html'>spaceapi_server</a>::<wbr><a href='../index.html'>datastore</a>::<wbr><a href='index.html'>common</a></p><script>window.sidebarCurrent = {name: 'ErrorDisplay', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+        <p class='location'><a href='../index.html'>spaceapi_server</a>::<wbr><a href='index.html'>sensors</a></p><script>window.sidebarCurrent = {name: 'ErrorDisplay', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script>
     </nav>
 
     <nav class="sub">
@@ -41,11 +41,11 @@
     </nav>
 
     <section id='main' class="content trait">
-<h1 class='fqn'><span class='in-band'>Trait <a href='../../index.html'>spaceapi_server</a>::<wbr><a href='../index.html'>datastore</a>::<wbr><a href='index.html'>common</a>::<wbr><a class='trait' href=''>ErrorDisplay</a></span><span class='out-of-band'><span id='render-detail'>
+<h1 class='fqn'><span class='in-band'>Trait <a href='../index.html'>spaceapi_server</a>::<wbr><a href='index.html'>sensors</a>::<wbr><a class='trait' href=''>ErrorDisplay</a></span><span class='out-of-band'><span id='render-detail'>
             <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                 [<span class='inner'>&#x2212;</span>]
             </a>
-        </span><a id='src-1708' class='srclink' href='../../../src/spaceapi_server/<error_type macros>.html#13-15' title='goto source code'>[src]</a></span></h1>
+        </span><a id='src-1685' class='srclink' href='../../src/spaceapi_server/<error_type macros>.html#13-15' title='goto source code'>[src]</a></span></h1>
 <pre class='rust trait'>pub trait ErrorDisplay {
     fn <a href='#tymethod.error_fmt' class='fnname'>error_fmt</a>(&amp;self, &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>, <a class='struct' href='https://doc.rust-lang.org/nightly/core/fmt/struct.Error.html' title='core::fmt::Error'>Error</a>&gt;;
 }</pre>
@@ -54,10 +54,10 @@
         <h3 id='tymethod.error_fmt' class='method stab '><code>fn <a href='#tymethod.error_fmt' class='fnname'>error_fmt</a>(&amp;self, &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>, <a class='struct' href='https://doc.rust-lang.org/nightly/core/fmt/struct.Error.html' title='core::fmt::Error'>Error</a>&gt;</code></h3></div>
         <h2 id='implementors'>Implementors</h2>
         <ul class='item-list' id='implementors-list'>
-    <li><code>impl&lt;'a&gt; <a class='trait' href='../../../spaceapi_server/datastore/common/trait.ErrorDisplay.html' title='spaceapi_server::datastore::common::ErrorDisplay'>ErrorDisplay</a> for <a href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(&amp;'a <a class='enum' href='../../../spaceapi_server/datastore/common/enum.DataStoreError.html' title='spaceapi_server::datastore::common::DataStoreError'>DataStoreError</a>, &amp;'a RedisError)</a></code></li>
-<li><code>impl&lt;'a&gt; <a class='trait' href='../../../spaceapi_server/datastore/common/trait.ErrorDisplay.html' title='spaceapi_server::datastore::common::ErrorDisplay'>ErrorDisplay</a> for <a href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(&amp;'a <a class='enum' href='../../../spaceapi_server/datastore/common/enum.DataStoreError.html' title='spaceapi_server::datastore::common::DataStoreError'>DataStoreError</a>, &amp;'a <a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>)</a></code></li>
+    <li><code>impl&lt;'a&gt; <a class='trait' href='../../spaceapi_server/sensors/trait.ErrorDisplay.html' title='spaceapi_server::sensors::ErrorDisplay'>ErrorDisplay</a> for <a href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(&amp;'a <a class='enum' href='../../spaceapi_server/sensors/enum.SensorError.html' title='spaceapi_server::sensors::SensorError'>SensorError</a>, &amp;'a <a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>)</a></code></li>
+<li><code>impl&lt;'a&gt; <a class='trait' href='../../spaceapi_server/sensors/trait.ErrorDisplay.html' title='spaceapi_server::sensors::ErrorDisplay'>ErrorDisplay</a> for <a href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(&amp;'a <a class='enum' href='../../spaceapi_server/sensors/enum.SensorError.html' title='spaceapi_server::sensors::SensorError'>SensorError</a>, &amp;'a RedisError)</a></code></li>
 </ul><script type="text/javascript" async
-                              src="../../../implementors/spaceapi_server/datastore/common/trait.ErrorDisplay.js">
+                              src="../../implementors/spaceapi_server/sensors/trait.ErrorDisplay.js">
                       </script></section>
     <section id='search' class="content hidden"></section>
 
@@ -110,13 +110,13 @@
     
 
     <script>
-        window.rootPath = "../../../";
+        window.rootPath = "../../";
         window.currentCrate = "spaceapi_server";
         window.playgroundUrl = "";
     </script>
-    <script src="../../../jquery.js"></script>
-    <script src="../../../main.js"></script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
     
-    <script async src="../../../search-index.js"></script>
+    <script async src="../../search-index.js"></script>
 </body>
 </html>
