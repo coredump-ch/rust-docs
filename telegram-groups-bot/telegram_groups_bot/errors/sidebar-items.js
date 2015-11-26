@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["CommandParseError","An enumeration of possible erorrs that can happen during the parsing of a message."]]});

@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["LogHandler","A simple handler that just logs the command."]],"trait":[["CommandHandler","A CommandHandler that can be run in a background thread."]]});
