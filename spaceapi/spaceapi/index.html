@@ -45,7 +45,7 @@
             <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                 [<span class='inner'>&#x2212;</span>]
             </a>
-        </span><a id='src-0' class='srclink' href='../src/spaceapi/lib.rs.html#1-83' title='goto source code'>[src]</a></span></h1>
+        </span><a id='src-0' class='srclink' href='../src/spaceapi/lib.rs.html#1-92' title='goto source code'>[src]</a></span></h1>
 <div class='docblock'><p>Space API definitions and serialization.</p>
 
 <p>This crate contains all data-related definitions that are present in the Space API
@@ -70,7 +70,7 @@ trait implementation. You can then create a string from the resulting object.</p
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>spaceapi</span>;
 
 <span class='kw'>use</span> <span class='ident'>spaceapi</span>::{<span class='ident'>Status</span>, <span class='ident'>Location</span>, <span class='ident'>Contact</span>};
-<span class='kw'>use</span> <span class='ident'>spaceapi</span>::<span class='ident'>optional</span>::<span class='ident'>Optional</span>;
+<span class='kw'>use</span> <span class='ident'>spaceapi</span>::<span class='ident'>optional</span>::<span class='ident'>Optional</span>::{<span class='ident'>Absent</span>, <span class='ident'>Value</span>};
 <span class='kw'>use</span> <span class='ident'>rustc_serialize</span>::<span class='ident'>json</span>::<span class='ident'>ToJson</span>;
 
 <span class='kw'>let</span> <span class='ident'>status</span> <span class='op'>=</span> <span class='ident'>Status</span>::<span class='ident'>new</span>(
@@ -78,16 +78,25 @@ trait implementation. You can then create a string from the resulting object.</p
     <span class='string'>&quot;https://www.coredump.ch/logo.png&quot;</span>,
     <span class='string'>&quot;https://www.coredump.ch/&quot;</span>,
     <span class='ident'>Location</span> {
-        <span class='ident'>address</span>: <span class='ident'>Optional</span>::<span class='ident'>Value</span>(
+        <span class='ident'>address</span>: <span class='ident'>Value</span>(
             <span class='string'>&quot;Spinnereistrasse 2, 8640 Rapperswil, Switzerland&quot;</span>.<span class='ident'>into</span>()),
         <span class='ident'>lat</span>: <span class='number'>47.22936</span>,
         <span class='ident'>lon</span>: <span class='number'>8.82949</span>,
     },
     <span class='ident'>Contact</span> {
-        <span class='ident'>irc</span>: <span class='ident'>Optional</span>::<span class='ident'>Value</span>(<span class='string'>&quot;irc://freenode.net/#coredump&quot;</span>.<span class='ident'>into</span>()),
-        <span class='ident'>twitter</span>: <span class='ident'>Optional</span>::<span class='ident'>Value</span>(<span class='string'>&quot;@coredump_ch&quot;</span>.<span class='ident'>into</span>()),
-        <span class='ident'>foursquare</span>: <span class='ident'>Optional</span>::<span class='ident'>Value</span>(<span class='string'>&quot;525c20e5498e875d8231b1e5&quot;</span>.<span class='ident'>into</span>()),
-        <span class='ident'>email</span>: <span class='ident'>Optional</span>::<span class='ident'>Value</span>(<span class='string'>&quot;danilo@coredump.ch&quot;</span>.<span class='ident'>into</span>()),
+        <span class='ident'>phone</span>: <span class='ident'>Absent</span>,
+        <span class='ident'>sip</span>: <span class='ident'>Absent</span>,
+        <span class='ident'>keymasters</span>: <span class='ident'>Absent</span>,
+        <span class='ident'>irc</span>: <span class='ident'>Value</span>(<span class='string'>&quot;irc://freenode.net/#coredump&quot;</span>.<span class='ident'>into</span>()),
+        <span class='ident'>twitter</span>: <span class='ident'>Value</span>(<span class='string'>&quot;@coredump_ch&quot;</span>.<span class='ident'>into</span>()),
+        <span class='ident'>facebook</span>: <span class='ident'>Absent</span>,
+        <span class='ident'>google</span>: <span class='ident'>Absent</span>,
+        <span class='ident'>identica</span>: <span class='ident'>Absent</span>,
+        <span class='ident'>foursquare</span>: <span class='ident'>Value</span>(<span class='string'>&quot;525c20e5498e875d8231b1e5&quot;</span>.<span class='ident'>into</span>()),
+        <span class='ident'>email</span>: <span class='ident'>Value</span>(<span class='string'>&quot;danilo@coredump.ch&quot;</span>.<span class='ident'>into</span>()),
+        <span class='ident'>ml</span>: <span class='ident'>Absent</span>,
+        <span class='ident'>jabber</span>: <span class='ident'>Absent</span>,
+        <span class='ident'>issue_mail</span>: <span class='ident'>Absent</span>,
     },
     <span class='macro'>vec</span><span class='macro'>!</span>[
         <span class='string'>&quot;email&quot;</span>.<span class='ident'>into</span>(),
@@ -179,8 +188,24 @@ docs for more information.</p>
                     </tr>
                 
                     <tr class=' module-item'>
+                        <td><a class='struct' href='struct.GoogleContact.html'
+                               title='spaceapi::GoogleContact'>GoogleContact</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
                         <td><a class='struct' href='struct.Icon.html'
                                title='spaceapi::Icon'>Icon</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.Keymaster.html'
+                               title='spaceapi::Keymaster'>Keymaster</a></td>
                         <td class='docblock short'>
                              
                         </td>

@@ -1,1 +1,1 @@
-initSidebarItems({"struct":[["Cache",""],["Contact",""],["Event",""],["Feed",""],["Feeds",""],["Icon",""],["Location",""],["RadioShow",""],["Spacefed",""],["State",""],["Status","The main Space API status object."]]});
+initSidebarItems({"struct":[["Cache",""],["Contact",""],["Event",""],["Feed",""],["Feeds",""],["GoogleContact",""],["Icon",""],["Keymaster",""],["Location",""],["RadioShow",""],["Spacefed",""],["State",""],["Status","The main Space API status object."]]});
