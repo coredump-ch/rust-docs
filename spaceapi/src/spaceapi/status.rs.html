@@ -426,8 +426,6 @@
 <span id="384">384</span>
 <span id="385">385</span>
 <span id="386">386</span>
-<span id="387">387</span>
-<span id="388">388</span>
 </pre><pre class='rust '>
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>collections</span>::<span class='ident'>BTreeMap</span>;
 <span class='kw'>use</span> <span class='ident'>rustc_serialize</span>::<span class='ident'>json</span>::{<span class='ident'>Json</span>, <span class='ident'>ToJson</span>};
@@ -438,27 +436,27 @@
 <span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>sensors</span>::<span class='ident'>PeopleNowPresentSensor</span>;
 
 
-<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Clone</span>, <span class='ident'>RustcDecodable</span>)]</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Clone</span>, <span class='ident'>PartialEq</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Location</span> {
     <span class='kw'>pub</span> <span class='ident'>address</span>: <span class='ident'>Optional</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
     <span class='kw'>pub</span> <span class='ident'>lat</span>: <span class='ident'>f64</span>,
     <span class='kw'>pub</span> <span class='ident'>lon</span>: <span class='ident'>f64</span>,
 }
 
-<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Clone</span>, <span class='ident'>RustcDecodable</span>)]</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Clone</span>, <span class='ident'>PartialEq</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Spacefed</span> {
     <span class='kw'>pub</span> <span class='ident'>spacenet</span>: <span class='ident'>bool</span>,
     <span class='kw'>pub</span> <span class='ident'>spacesaml</span>: <span class='ident'>bool</span>,
     <span class='kw'>pub</span> <span class='ident'>spacephone</span>: <span class='ident'>bool</span>,
 }
 
-<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Clone</span>, <span class='ident'>RustcDecodable</span>)]</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Clone</span>, <span class='ident'>PartialEq</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Icon</span> {
     <span class='kw'>pub</span> <span class='ident'>open</span>: <span class='ident'>String</span>,
     <span class='kw'>pub</span> <span class='ident'>close</span>: <span class='ident'>String</span>,
 }
 
-<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Clone</span>, <span class='ident'>RustcDecodable</span>)]</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Clone</span>, <span class='ident'>PartialEq</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>State</span> {
     <span class='kw'>pub</span> <span class='ident'>open</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>bool</span><span class='op'>&gt;</span>,
     <span class='kw'>pub</span> <span class='ident'>lastchange</span>: <span class='ident'>Optional</span><span class='op'>&lt;</span><span class='ident'>u64</span><span class='op'>&gt;</span>,
@@ -467,7 +465,7 @@
     <span class='kw'>pub</span> <span class='ident'>icon</span>: <span class='ident'>Optional</span><span class='op'>&lt;</span><span class='ident'>Icon</span><span class='op'>&gt;</span>,
 }
 
-<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Clone</span>, <span class='ident'>RustcDecodable</span>)]</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Clone</span>, <span class='ident'>PartialEq</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Event</span> {
     <span class='kw'>pub</span> <span class='ident'>name</span>: <span class='ident'>String</span>,
     <span class='kw'>pub</span> <span class='ident'>_type</span>: <span class='ident'>String</span>,
@@ -475,7 +473,7 @@
     <span class='kw'>pub</span> <span class='ident'>extra</span>: <span class='ident'>Optional</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
 }
 
-<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Clone</span>, <span class='ident'>RustcDecodable</span>)]</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Clone</span>, <span class='ident'>PartialEq</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Keymaster</span> {
     <span class='kw'>pub</span> <span class='ident'>name</span>: <span class='ident'>Optional</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
     <span class='kw'>pub</span> <span class='ident'>irc_nick</span>: <span class='ident'>Optional</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
@@ -484,12 +482,12 @@
     <span class='kw'>pub</span> <span class='ident'>twitter</span>: <span class='ident'>Optional</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
 }
 
-<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Clone</span>, <span class='ident'>RustcDecodable</span>)]</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Clone</span>, <span class='ident'>PartialEq</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>GoogleContact</span> {
     <span class='kw'>pub</span> <span class='ident'>plus</span>: <span class='ident'>Optional</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
 }
 
-<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Clone</span>, <span class='ident'>RustcDecodable</span>)]</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Clone</span>, <span class='ident'>PartialEq</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Contact</span> {
     <span class='kw'>pub</span> <span class='ident'>phone</span>: <span class='ident'>Optional</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
     <span class='kw'>pub</span> <span class='ident'>sip</span>: <span class='ident'>Optional</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
@@ -506,13 +504,13 @@
     <span class='kw'>pub</span> <span class='ident'>issue_mail</span>: <span class='ident'>Optional</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
 }
 
-<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Clone</span>, <span class='ident'>RustcDecodable</span>)]</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Clone</span>, <span class='ident'>PartialEq</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Feed</span> {
     <span class='kw'>pub</span> <span class='ident'>_type</span>: <span class='ident'>Optional</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
     <span class='kw'>pub</span> <span class='ident'>url</span>: <span class='ident'>String</span>,
 }
 
-<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Clone</span>, <span class='ident'>RustcDecodable</span>)]</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Clone</span>, <span class='ident'>PartialEq</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Feeds</span> {
     <span class='kw'>pub</span> <span class='ident'>blog</span>: <span class='ident'>Optional</span><span class='op'>&lt;</span><span class='ident'>Feed</span><span class='op'>&gt;</span>,
     <span class='kw'>pub</span> <span class='ident'>wiki</span>: <span class='ident'>Optional</span><span class='op'>&lt;</span><span class='ident'>Feed</span><span class='op'>&gt;</span>,
@@ -520,12 +518,12 @@
     <span class='kw'>pub</span> <span class='ident'>flickr</span>: <span class='ident'>Optional</span><span class='op'>&lt;</span><span class='ident'>Feed</span><span class='op'>&gt;</span>,
 }
 
-<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Clone</span>, <span class='ident'>RustcDecodable</span>)]</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Clone</span>, <span class='ident'>PartialEq</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Cache</span> {
     <span class='kw'>pub</span> <span class='ident'>schedule</span>: <span class='ident'>String</span>,
 }
 
-<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Clone</span>, <span class='ident'>RustcDecodable</span>)]</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Clone</span>, <span class='ident'>PartialEq</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>RadioShow</span> {
     <span class='kw'>pub</span> <span class='ident'>name</span>: <span class='ident'>String</span>,
     <span class='kw'>pub</span> <span class='ident'>url</span>: <span class='ident'>String</span>,
@@ -535,7 +533,7 @@
 }
 
 <span class='doccomment'>/// The main Space API status object.</span>
-<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Clone</span>, <span class='ident'>RustcDecodable</span>)]</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Clone</span>, <span class='ident'>PartialEq</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Status</span> {
 
     <span class='comment'>// Hackerspace properties</span>
@@ -810,10 +808,8 @@
     <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>a</span>.<span class='ident'>sip</span>, <span class='ident'>b</span>.<span class='ident'>sip</span>);
     <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>a</span>.<span class='ident'>ml</span>, <span class='ident'>b</span>.<span class='ident'>ml</span>);
 
-    <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>a</span>.<span class='ident'>google</span>.<span class='ident'>as_ref</span>().<span class='ident'>unwrap</span>().<span class='ident'>plus</span>, <span class='ident'>b</span>.<span class='ident'>google</span>.<span class='ident'>as_ref</span>().<span class='ident'>unwrap</span>().<span class='ident'>plus</span>);
-    <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>a</span>.<span class='ident'>keymasters</span>.<span class='ident'>as_ref</span>().<span class='ident'>unwrap</span>()[<span class='number'>0</span>].<span class='ident'>name</span>, <span class='ident'>b</span>.<span class='ident'>keymasters</span>.<span class='ident'>as_ref</span>().<span class='ident'>unwrap</span>()[<span class='number'>0</span>].<span class='ident'>name</span>);
-    <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>a</span>.<span class='ident'>keymasters</span>.<span class='ident'>as_ref</span>().<span class='ident'>unwrap</span>()[<span class='number'>0</span>].<span class='ident'>phone</span>, <span class='ident'>b</span>.<span class='ident'>keymasters</span>.<span class='ident'>as_ref</span>().<span class='ident'>unwrap</span>()[<span class='number'>0</span>].<span class='ident'>phone</span>);
-    <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>a</span>.<span class='ident'>keymasters</span>.<span class='ident'>as_ref</span>().<span class='ident'>unwrap</span>()[<span class='number'>0</span>].<span class='ident'>email</span>, <span class='ident'>b</span>.<span class='ident'>keymasters</span>.<span class='ident'>as_ref</span>().<span class='ident'>unwrap</span>()[<span class='number'>0</span>].<span class='ident'>email</span>);
+    <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>a</span>.<span class='ident'>google</span>, <span class='ident'>b</span>.<span class='ident'>google</span>);
+    <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>a</span>.<span class='ident'>keymasters</span>, <span class='ident'>b</span>.<span class='ident'>keymasters</span>);
   }
 
 }
