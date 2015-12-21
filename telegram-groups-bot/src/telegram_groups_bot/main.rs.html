@@ -144,6 +144,12 @@
 <span id="102">102</span>
 <span id="103">103</span>
 <span id="104">104</span>
+<span id="105">105</span>
+<span id="106">106</span>
+<span id="107">107</span>
+<span id="108">108</span>
+<span id="109">109</span>
+<span id="110">110</span>
 </pre><pre class='rust '>
 <span class='doccomment'>//! # Telegram Groups Bot</span>
 <span class='doccomment'>//!</span>
@@ -191,7 +197,12 @@
 
 <span class='doccomment'>/// Initialize and return a `telegram_bot::Listener` instance.</span>
 <span class='kw'>fn</span> <span class='ident'>get_listener</span>() <span class='op'>-&gt;</span> <span class='ident'>Listener</span> {
-    <span class='kw'>let</span> <span class='ident'>api</span> <span class='op'>=</span> <span class='ident'>Api</span>::<span class='ident'>from_env</span>(<span class='string'>&quot;TELEGRAM_BOT_TOKEN&quot;</span>).<span class='ident'>unwrap</span>();
+
+    <span class='kw'>let</span> <span class='ident'>api</span> <span class='op'>=</span> <span class='ident'>Api</span>::<span class='ident'>from_env</span>(<span class='string'>&quot;TELEGRAM_BOT_TOKEN&quot;</span>).<span class='ident'>unwrap_or_else</span>(<span class='op'>|</span>_<span class='op'>|</span> {
+        <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Error: TELEGRAM_BOT_TOKEN env var missing&quot;</span>);
+        <span class='ident'>exit</span>(<span class='number'>1</span>);
+    });
+
     <span class='kw'>match</span> <span class='ident'>api</span>.<span class='ident'>get_me</span>() {
         <span class='prelude-val'>Ok</span>(<span class='ident'>user</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Starting {}...&quot;</span>, <span class='ident'>user</span>.<span class='ident'>first_name</span>),
         <span class='prelude-val'>Err</span>(<span class='ident'>e</span>) <span class='op'>=&gt;</span> {
@@ -201,6 +212,7 @@
             <span class='ident'>exit</span>(<span class='number'>1</span>);
         },
     }
+
     <span class='ident'>api</span>.<span class='ident'>listener</span>(<span class='ident'>ListeningMethod</span>::<span class='ident'>LongPoll</span>(<span class='prelude-val'>None</span>))
 
 }
