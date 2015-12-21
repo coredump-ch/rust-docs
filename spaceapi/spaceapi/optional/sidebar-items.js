@@ -1,1 +1,1 @@
-initSidebarItems({"enum":[["Optional","An `Optional` can contain either `Value<T>` or `Absent`. It is similar to an `Option`, but `None` will be serialized to `null` while `Absent` means the value will be omitted when serialized."]]});
+initSidebarItems({"enum":[["Optional","An `Optional` can contain either `Value<T>` or `Absent`. It is similar to an `Option`, but `None` will be serialized to `null` while `Absent` means that both the key and the value will be omitted when serialized."]]});
