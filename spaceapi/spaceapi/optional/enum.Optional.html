@@ -45,7 +45,7 @@
             <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                 [<span class='inner'>&#x2212;</span>]
             </a>
-        </span><a id='src-11' class='srclink' href='../../src/spaceapi/optional.rs.html#10-13' title='goto source code'>[src]</a></span></h1>
+        </span><a id='src-9' class='srclink' href='../../src/spaceapi/optional.rs.html#10-13' title='goto source code'>[src]</a></span></h1>
 <pre class='rust enum'>pub enum Optional&lt;T&gt; {
     Value(T),
     Absent,
@@ -56,18 +56,15 @@ while <code>Absent</code> means the value will be omitted when serialized.</p>
 <table><tr><td id='variant.Value'><code>Value</code></td><td></td></tr><tr><td id='variant.Absent'><code>Absent</code></td><td></td></tr></table><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl&lt;T&gt; <a class='enum' href='../../spaceapi/optional/enum.Optional.html' title='spaceapi::optional::Optional'>Optional</a>&lt;T&gt;</code></h3><div class='impl-items'><h4 id='method.unwrap' class='method'><code>fn <a href='#method.unwrap' class='fnname'>unwrap</a>(self) -&gt; T</code></h4>
 <div class='docblock'><p>Moves the value <code>v</code> out of the <code>Optional&lt;T&gt;</code> if it is <code>Value(v)</code>.</p>
 
-<h1 id="panics" class='section-header'><a
-                           href="#panics">Panics</a></h1>
+<h1 id='panics' class='section-header'><a href='#panics'>Panics</a></h1>
 <p>Panics if the self value equals <code>Absent</code>.</p>
 
-<h1 id="safety-note" class='section-header'><a
-                           href="#safety-note">Safety note</a></h1>
+<h1 id='safety-note' class='section-header'><a href='#safety-note'>Safety note</a></h1>
 <p>In general, because this function may panic, its use is discouraged.
 Instead, prefer to use pattern matching and handle the <code>Absent</code>
 case explicitly.</p>
 
-<h1 id="examples" class='section-header'><a
-                           href="#examples">Examples</a></h1><pre class='rust rust-example-rendered'>
+<h1 id='examples' class='section-header'><a href='#examples'>Examples</a></h1><pre class='rust rust-example-rendered'>
 <span class='kw'>let</span> <span class='ident'>x</span> <span class='op'>=</span> <span class='ident'>Value</span>(<span class='string'>&quot;air&quot;</span>);
 <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>x</span>.<span class='ident'>unwrap</span>(), <span class='string'>&quot;air&quot;</span>);</pre>
 <pre class='rust rust-example-rendered'>
@@ -76,16 +73,14 @@ case explicitly.</p>
 </div><h4 id='method.unwrap_or_else' class='method'><code>fn <a href='#method.unwrap_or_else' class='fnname'>unwrap_or_else</a>&lt;F: <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.FnOnce.html' title='core::ops::FnOnce'>FnOnce</a>() -&gt; T&gt;(self, f: F) -&gt; T</code></h4>
 <div class='docblock'><p>Returns the contained value or computes it from a closure.</p>
 
-<h1 id="examples" class='section-header'><a
-                           href="#examples">Examples</a></h1><pre class='rust rust-example-rendered'>
+<h1 id='examples' class='section-header'><a href='#examples'>Examples</a></h1><pre class='rust rust-example-rendered'>
 <span class='kw'>let</span> <span class='ident'>k</span> <span class='op'>=</span> <span class='number'>10</span>;
 <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>Value</span>(<span class='number'>4</span>).<span class='ident'>unwrap_or_else</span>(<span class='op'>||</span> <span class='number'>2</span> <span class='op'>*</span> <span class='ident'>k</span>), <span class='number'>4</span>);
 <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>Absent</span>.<span class='ident'>unwrap_or_else</span>(<span class='op'>||</span> <span class='number'>2</span> <span class='op'>*</span> <span class='ident'>k</span>), <span class='number'>20</span>);</pre>
 </div><h4 id='method.map' class='method'><code>fn <a href='#method.map' class='fnname'>map</a>&lt;U, F: <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.FnOnce.html' title='core::ops::FnOnce'>FnOnce</a>(T) -&gt; U&gt;(self, f: F) -&gt; <a class='enum' href='../../spaceapi/optional/enum.Optional.html' title='spaceapi::optional::Optional'>Optional</a>&lt;U&gt;</code></h4>
 <div class='docblock'><p>Maps an <code>Optional&lt;T&gt;</code> to <code>Optional&lt;U&gt;</code> by applying a function to a contained value</p>
 
-<h1 id="examples" class='section-header'><a
-                           href="#examples">Examples</a></h1>
+<h1 id='examples' class='section-header'><a href='#examples'>Examples</a></h1>
 <p>Convert an <code>Optional&lt;String&gt;</code> into an <code>Optional&lt;usize&gt;</code>, consuming the original:</p>
 <pre class='rust rust-example-rendered'>
 <span class='kw'>let</span> <span class='ident'>num_as_str</span>: <span class='ident'>Optional</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span> <span class='op'>=</span> <span class='ident'>Value</span>(<span class='string'>&quot;10&quot;</span>.<span class='ident'>to_string</span>());
@@ -104,8 +99,7 @@ wrapped value and returns the result.</p>
 
 <p>Some languages call this operation flatmap.</p>
 
-<h1 id="examples" class='section-header'><a
-                           href="#examples">Examples</a></h1><pre class='rust rust-example-rendered'>
+<h1 id='examples' class='section-header'><a href='#examples'>Examples</a></h1><pre class='rust rust-example-rendered'>
 <span class='kw'>fn</span> <span class='ident'>sq</span>(<span class='ident'>x</span>: <span class='ident'>u32</span>) <span class='op'>-&gt;</span> <span class='ident'>Optional</span><span class='op'>&lt;</span><span class='ident'>u32</span><span class='op'>&gt;</span> { <span class='ident'>Value</span>(<span class='ident'>x</span> <span class='op'>*</span> <span class='ident'>x</span>) }
 <span class='kw'>fn</span> <span class='ident'>nope</span>(_: <span class='ident'>u32</span>) <span class='op'>-&gt;</span> <span class='ident'>Optional</span><span class='op'>&lt;</span><span class='ident'>u32</span><span class='op'>&gt;</span> { <span class='ident'>Absent</span> }
 
@@ -116,8 +110,7 @@ wrapped value and returns the result.</p>
 </div><h4 id='method.is_absent' class='method'><code>fn <a href='#method.is_absent' class='fnname'>is_absent</a>(&amp;self) -&gt; <a href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
 <div class='docblock'><p>Returns <code>true</code> if the optional is a <code>Absent</code> value</p>
 
-<h1 id="examples" class='section-header'><a
-                           href="#examples">Examples</a></h1><pre class='rust rust-example-rendered'>
+<h1 id='examples' class='section-header'><a href='#examples'>Examples</a></h1><pre class='rust rust-example-rendered'>
 <span class='kw'>let</span> <span class='ident'>x</span>: <span class='ident'>Optional</span><span class='op'>&lt;</span><span class='ident'>u32</span><span class='op'>&gt;</span> <span class='op'>=</span> <span class='ident'>Value</span>(<span class='number'>2</span>);
 <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>x</span>.<span class='ident'>is_absent</span>(), <span class='boolval'>false</span>);
 
