@@ -9,6 +9,7 @@
 
     <title>spaceapi_server::api::SensorTemplate - Rust</title>
 
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
     <link rel="stylesheet" type="text/css" href="../../main.css">
 
     
@@ -47,7 +48,7 @@
             </a>
         </span></span></h1>
 <pre class='rust trait'>pub trait SensorTemplate: <a class='trait' href='https://doc.rust-lang.org/nightly/core/marker/trait.Send.html' title='core::marker::Send'>Send</a> + <a class='trait' href='https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html' title='core::marker::Sync'>Sync</a> {
-    fn <a href='#tymethod.to_sensor' class='fnname'>to_sensor</a>(&amp;self, value_str: &amp;<a href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, sensors: &amp;mut <a class='struct' href='../../spaceapi_server/api/struct.Sensors.html' title='spaceapi_server::api::Sensors'>Sensors</a>);
+    fn <a href='#tymethod.to_sensor' class='fnname'>to_sensor</a>(&amp;self, value_str: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, sensors: &amp;mut <a class='struct' href='../../spaceapi_server/api/struct.Sensors.html' title='spaceapi_server::api::Sensors'>Sensors</a>);
 }</pre><div class='docblock'><p>A trait for all possible sensor templates.</p>
 
 <p>A sensor template is like a sensor struct, but without the actual data in it.
@@ -55,7 +56,7 @@ A <code>SensorTemplate</code> is capable of registering itself in a <code>Sensor
 </div>
             <h2 id='required-methods'>Required Methods</h2>
             <div class='methods'>
-        <h3 id='tymethod.to_sensor' class='method stab '><code>fn <a href='#tymethod.to_sensor' class='fnname'>to_sensor</a>(&amp;self, value_str: &amp;<a href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, sensors: &amp;mut <a class='struct' href='../../spaceapi_server/api/struct.Sensors.html' title='spaceapi_server::api::Sensors'>Sensors</a>)</code></h3></div>
+        <h3 id='tymethod.to_sensor' class='method stab '><code>fn <a href='#tymethod.to_sensor' class='fnname'>to_sensor</a>(&amp;self, value_str: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, sensors: &amp;mut <a class='struct' href='../../spaceapi_server/api/struct.Sensors.html' title='spaceapi_server::api::Sensors'>Sensors</a>)</code></h3></div>
         <h2 id='implementors'>Implementors</h2>
         <ul class='item-list' id='implementors-list'>
     <li><code>impl <a class='trait' href='../../spaceapi_server/api/trait.SensorTemplate.html' title='spaceapi_server::api::SensorTemplate'>SensorTemplate</a> for <a class='struct' href='../../spaceapi_server/api/sensors/struct.PeopleNowPresentSensorTemplate.html' title='spaceapi_server::api::sensors::PeopleNowPresentSensorTemplate'>PeopleNowPresentSensorTemplate</a></code></li>
@@ -121,6 +122,6 @@ A <code>SensorTemplate</code> is capable of registering itself in a <code>Sensor
     <script src="../../jquery.js"></script>
     <script src="../../main.js"></script>
     
-    <script async src="../../search-index.js"></script>
+    <script defer src="../../search-index.js"></script>
 </body>
 </html>

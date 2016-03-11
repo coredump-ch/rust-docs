@@ -1,1 +1,1 @@
-initSidebarItems({"enum":[["SpaceapiServerError",""]],"trait":[["ErrorCause",""],["ErrorDescription",""],["ErrorDisplay",""]]});
+initSidebarItems({"enum":[["SpaceapiServerError",""]]});
