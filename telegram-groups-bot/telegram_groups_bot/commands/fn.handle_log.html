@@ -4,11 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `src/commands.rs`.">
-    <meta name="keywords" content="rust, rustlang, rust-lang">
+    <meta name="description" content="API documentation for the Rust `handle_log` fn in crate `telegram_groups_bot`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, handle_log">
 
-    <title>commands.rs.html -- source</title>
+    <title>telegram_groups_bot::commands::handle_log - Rust</title>
 
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
     <link rel="stylesheet" type="text/css" href="../../main.css">
 
     
@@ -26,7 +27,7 @@
 
     <nav class="sidebar">
         
-        
+        <p class='location'><a href='../index.html'>telegram_groups_bot</a>::<wbr><a href='index.html'>commands</a></p><script>window.sidebarCurrent = {name: 'handle_log', ty: 'fn', relpath: ''};</script><script defer src="sidebar-items.js"></script>
     </nav>
 
     <nav class="sub">
@@ -40,51 +41,14 @@
         </form>
     </nav>
 
-    <section id='main' class="content source"><pre class="line-numbers"><span id="1"> 1</span>
-<span id="2"> 2</span>
-<span id="3"> 3</span>
-<span id="4"> 4</span>
-<span id="5"> 5</span>
-<span id="6"> 6</span>
-<span id="7"> 7</span>
-<span id="8"> 8</span>
-<span id="9"> 9</span>
-<span id="10">10</span>
-<span id="11">11</span>
-<span id="12">12</span>
-<span id="13">13</span>
-<span id="14">14</span>
-<span id="15">15</span>
-<span id="16">16</span>
-<span id="17">17</span>
-<span id="18">18</span>
-<span id="19">19</span>
-<span id="20">20</span>
-<span id="21">21</span>
-</pre><pre class='rust '>
-<span class='doccomment'>//! Implementations of the command handlers.</span>
-
-<span class='kw'>use</span> <span class='ident'>types</span>::<span class='ident'>Command</span>;
-
-
-<span class='doccomment'>/// A CommandHandler that can be run in a background thread.</span>
-<span class='kw'>pub</span> <span class='kw'>trait</span> <span class='ident'>CommandHandler</span>: <span class='ident'>Send</span> <span class='op'>+</span> <span class='ident'>Sync</span> {
-    <span class='kw'>fn</span> <span class='ident'>handle</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>);
-}
-
-
-<span class='doccomment'>/// A simple handler that just logs the command.</span>
-<span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>LogHandler</span> {
-    <span class='kw'>pub</span> <span class='ident'>command</span>: <span class='ident'>Command</span>,
-}
-
-<span class='kw'>impl</span> <span class='ident'>CommandHandler</span> <span class='kw'>for</span> <span class='ident'>LogHandler</span> {
-    <span class='kw'>fn</span> <span class='ident'>handle</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) {
-        <span class='macro'>info</span><span class='macro'>!</span>(<span class='string'>&quot;Handled command: {}&quot;</span>, <span class='kw-2'>&amp;</span><span class='self'>self</span>.<span class='ident'>command</span>);
-    }
-}
-</pre>
-</section>
+    <section id='main' class="content fn">
+<h1 class='fqn'><span class='in-band'>Function <a href='../index.html'>telegram_groups_bot</a>::<wbr><a href='index.html'>commands</a>::<wbr><a class='fn' href=''>handle_log</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                [<span class='inner'>&#x2212;</span>]
+            </a>
+        </span><a id='src-69' class='srclink' href='../../src/telegram_groups_bot/src/commands.rs.html#9-12' title='goto source code'>[src]</a></span></h1>
+<pre class='rust fn'>pub fn handle_log(command: &amp;<a class='struct' href='../../telegram_groups_bot/types/struct.Command.html' title='telegram_groups_bot::types::Command'>Command</a>, message: &amp;Message) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;</pre><div class='docblock'><p>Log the command, don&#39;t do anything else.</p>
+</div></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>
@@ -127,7 +91,7 @@
 
                 <p>
                     Search functions by type signature (e.g.
-                    <code>vec -> usize</code>)
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
                 </p>
             </div>
         </div>
@@ -143,6 +107,6 @@
     <script src="../../jquery.js"></script>
     <script src="../../main.js"></script>
     
-    <script async src="../../search-index.js"></script>
+    <script defer src="../../search-index.js"></script>
 </body>
 </html>

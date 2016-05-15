@@ -9,6 +9,7 @@
 
     <title>telegram_groups_bot::commands - Rust</title>
 
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
     <link rel="stylesheet" type="text/css" href="../../main.css">
 
     
@@ -45,26 +46,39 @@
             <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                 [<span class='inner'>&#x2212;</span>]
             </a>
-        </span><a id='src-63' class='srclink' href='../../src/telegram_groups_bot/commands.rs.html#1-21' title='goto source code'>[src]</a></span></h1>
+        </span><a id='src-65' class='srclink' href='../../src/telegram_groups_bot/src/commands.rs.html#1-38' title='goto source code'>[src]</a></span></h1>
 <div class='docblock'><p>Implementations of the command handlers.</p>
-</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+</div><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
 <table>
                     <tr class=' module-item'>
-                        <td><a class='struct' href='struct.LogHandler.html'
-                               title='telegram_groups_bot::commands::LogHandler'>LogHandler</a></td>
+                        <td><a class='fn' href='fn.handle_add.html'
+                               title='telegram_groups_bot::commands::handle_add'>handle_add</a></td>
                         <td class='docblock short'>
-                             <p>A simple handler that just logs the command.</p>
-
+                             <p>Add a new topic group.</p>
                         </td>
                     </tr>
-                </table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
-<table>
+                
                     <tr class=' module-item'>
-                        <td><a class='trait' href='trait.CommandHandler.html'
-                               title='telegram_groups_bot::commands::CommandHandler'>CommandHandler</a></td>
+                        <td><a class='fn' href='fn.handle_groups.html'
+                               title='telegram_groups_bot::commands::handle_groups'>handle_groups</a></td>
                         <td class='docblock short'>
-                             <p>A CommandHandler that can be run in a background thread.</p>
-
+                             <p>Return list of groups.</p>
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='fn' href='fn.handle_help.html'
+                               title='telegram_groups_bot::commands::handle_help'>handle_help</a></td>
+                        <td class='docblock short'>
+                             <p>Return help output.</p>
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='fn' href='fn.handle_log.html'
+                               title='telegram_groups_bot::commands::handle_log'>handle_log</a></td>
+                        <td class='docblock short'>
+                             <p>Log the command, don&#39;t do anything else.</p>
                         </td>
                     </tr>
                 </table></section>
@@ -110,7 +124,7 @@
 
                 <p>
                     Search functions by type signature (e.g.
-                    <code>vec -> usize</code>)
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
                 </p>
             </div>
         </div>
@@ -126,6 +140,6 @@
     <script src="../../jquery.js"></script>
     <script src="../../main.js"></script>
     
-    <script async src="../../search-index.js"></script>
+    <script defer src="../../search-index.js"></script>
 </body>
 </html>

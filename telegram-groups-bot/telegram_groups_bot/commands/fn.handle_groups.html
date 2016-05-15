@@ -4,11 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="API documentation for the Rust `CommandHandler` trait in crate `telegram_groups_bot`.">
-    <meta name="keywords" content="rust, rustlang, rust-lang, CommandHandler">
+    <meta name="description" content="API documentation for the Rust `handle_groups` fn in crate `telegram_groups_bot`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, handle_groups">
 
-    <title>telegram_groups_bot::commands::CommandHandler - Rust</title>
+    <title>telegram_groups_bot::commands::handle_groups - Rust</title>
 
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
     <link rel="stylesheet" type="text/css" href="../../main.css">
 
     
@@ -26,7 +27,7 @@
 
     <nav class="sidebar">
         
-        <p class='location'><a href='../index.html'>telegram_groups_bot</a>::<wbr><a href='index.html'>commands</a></p><script>window.sidebarCurrent = {name: 'CommandHandler', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+        <p class='location'><a href='../index.html'>telegram_groups_bot</a>::<wbr><a href='index.html'>commands</a></p><script>window.sidebarCurrent = {name: 'handle_groups', ty: 'fn', relpath: ''};</script><script defer src="sidebar-items.js"></script>
     </nav>
 
     <nav class="sub">
@@ -40,25 +41,14 @@
         </form>
     </nav>
 
-    <section id='main' class="content trait">
-<h1 class='fqn'><span class='in-band'>Trait <a href='../index.html'>telegram_groups_bot</a>::<wbr><a href='index.html'>commands</a>::<wbr><a class='trait' href=''>CommandHandler</a></span><span class='out-of-band'><span id='render-detail'>
+    <section id='main' class="content fn">
+<h1 class='fqn'><span class='in-band'>Function <a href='../index.html'>telegram_groups_bot</a>::<wbr><a href='index.html'>commands</a>::<wbr><a class='fn' href=''>handle_groups</a></span><span class='out-of-band'><span id='render-detail'>
             <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                 [<span class='inner'>&#x2212;</span>]
             </a>
-        </span><a id='src-66' class='srclink' href='../../src/telegram_groups_bot/commands.rs.html#7-9' title='goto source code'>[src]</a></span></h1>
-<pre class='rust trait'>pub trait CommandHandler: <a class='trait' href='https://doc.rust-lang.org/nightly/core/marker/trait.Send.html' title='core::marker::Send'>Send</a> + <a class='trait' href='https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html' title='core::marker::Sync'>Sync</a> {
-    fn <a href='#tymethod.handle' class='fnname'>handle</a>(&amp;self);
-}</pre><div class='docblock'><p>A CommandHandler that can be run in a background thread.</p>
-</div>
-            <h2 id='required-methods'>Required Methods</h2>
-            <div class='methods'>
-        <h3 id='tymethod.handle' class='method stab '><code>fn <a href='#tymethod.handle' class='fnname'>handle</a>(&amp;self)</code></h3></div>
-        <h2 id='implementors'>Implementors</h2>
-        <ul class='item-list' id='implementors-list'>
-    <li><code>impl <a class='trait' href='../../telegram_groups_bot/commands/trait.CommandHandler.html' title='telegram_groups_bot::commands::CommandHandler'>CommandHandler</a> for <a class='struct' href='../../telegram_groups_bot/commands/struct.LogHandler.html' title='telegram_groups_bot::commands::LogHandler'>LogHandler</a></code></li>
-</ul><script type="text/javascript" async
-                              src="../../implementors/telegram_groups_bot/commands/trait.CommandHandler.js">
-                      </script></section>
+        </span><a id='src-83' class='srclink' href='../../src/telegram_groups_bot/src/commands.rs.html#28-31' title='goto source code'>[src]</a></span></h1>
+<pre class='rust fn'>pub fn handle_groups(command: &amp;<a class='struct' href='../../telegram_groups_bot/types/struct.Command.html' title='telegram_groups_bot::types::Command'>Command</a>, message: &amp;Message) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;</pre><div class='docblock'><p>Return list of groups.</p>
+</div></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>
@@ -101,7 +91,7 @@
 
                 <p>
                     Search functions by type signature (e.g.
-                    <code>vec -> usize</code>)
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
                 </p>
             </div>
         </div>
@@ -117,6 +107,6 @@
     <script src="../../jquery.js"></script>
     <script src="../../main.js"></script>
     
-    <script async src="../../search-index.js"></script>
+    <script defer src="../../search-index.js"></script>
 </body>
 </html>

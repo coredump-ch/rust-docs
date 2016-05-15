@@ -1,1 +1,1 @@
-initSidebarItems({"struct":[["Command",""]]});
+initSidebarItems({"struct":[["Command","A stateless command."]]});

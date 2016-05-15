@@ -1,1 +1,1 @@
-initSidebarItems({"struct":[["LogHandler","A simple handler that just logs the command."]],"trait":[["CommandHandler","A CommandHandler that can be run in a background thread."]]});
+initSidebarItems({"fn":[["handle_add","Add a new topic group."],["handle_groups","Return list of groups."],["handle_help","Return help output."],["handle_log","Log the command, don't do anything else."]]});

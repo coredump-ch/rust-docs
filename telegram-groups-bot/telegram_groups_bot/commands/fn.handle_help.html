@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="API documentation for the Rust `errors` mod in crate `telegram_groups_bot`.">
-    <meta name="keywords" content="rust, rustlang, rust-lang, errors">
+    <meta name="description" content="API documentation for the Rust `handle_help` fn in crate `telegram_groups_bot`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, handle_help">
 
-    <title>telegram_groups_bot::errors - Rust</title>
+    <title>telegram_groups_bot::commands::handle_help - Rust</title>
 
     <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
     <link rel="stylesheet" type="text/css" href="../../main.css">
@@ -27,7 +27,7 @@
 
     <nav class="sidebar">
         
-        <p class='location'><a href='../index.html'>telegram_groups_bot</a></p><script>window.sidebarCurrent = {name: 'errors', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+        <p class='location'><a href='../index.html'>telegram_groups_bot</a>::<wbr><a href='index.html'>commands</a></p><script>window.sidebarCurrent = {name: 'handle_help', ty: 'fn', relpath: ''};</script><script defer src="sidebar-items.js"></script>
     </nav>
 
     <nav class="sub">
@@ -41,24 +41,14 @@
         </form>
     </nav>
 
-    <section id='main' class="content mod">
-<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>telegram_groups_bot</a>::<wbr><a class='mod' href=''>errors</a></span><span class='out-of-band'><span id='render-detail'>
+    <section id='main' class="content fn">
+<h1 class='fqn'><span class='in-band'>Function <a href='../index.html'>telegram_groups_bot</a>::<wbr><a href='index.html'>commands</a>::<wbr><a class='fn' href=''>handle_help</a></span><span class='out-of-band'><span id='render-detail'>
             <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                 [<span class='inner'>&#x2212;</span>]
             </a>
-        </span><a id='src-46' class='srclink' href='../../src/telegram_groups_bot/src/errors.rs.html#1-26' title='goto source code'>[src]</a></span></h1>
-<div class='docblock'><p>Errors used in this bot implementation.</p>
-</div><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
-<table>
-                    <tr class=' module-item'>
-                        <td><a class='enum' href='enum.CommandParseError.html'
-                               title='telegram_groups_bot::errors::CommandParseError'>CommandParseError</a></td>
-                        <td class='docblock short'>
-                             <p>An enumeration of possible erorrs that can happen
-during the parsing of a message.</p>
-                        </td>
-                    </tr>
-                </table></section>
+        </span><a id='src-76' class='srclink' href='../../src/telegram_groups_bot/src/commands.rs.html#16-24' title='goto source code'>[src]</a></span></h1>
+<pre class='rust fn'>pub fn handle_help(command: &amp;<a class='struct' href='../../telegram_groups_bot/types/struct.Command.html' title='telegram_groups_bot::types::Command'>Command</a>, message: &amp;Message) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;</pre><div class='docblock'><p>Return help output.</p>
+</div></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>

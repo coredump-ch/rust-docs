@@ -9,6 +9,7 @@
 
     <title>telegram_groups_bot::types::Command - Rust</title>
 
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
     <link rel="stylesheet" type="text/css" href="../../main.css">
 
     
@@ -45,20 +46,39 @@
             <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                 [<span class='inner'>&#x2212;</span>]
             </a>
-        </span><a id='src-13' class='srclink' href='../../src/telegram_groups_bot/types.rs.html#9-12' title='goto source code'>[src]</a></span></h1>
+        </span><a id='src-13' class='srclink' href='../../src/telegram_groups_bot/src/types.rs.html#25-30' title='goto source code'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct Command {
     pub name: <a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>,
     pub params: <a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;,
-}</pre><h2 class='fields'>Fields</h2>
+}</pre><div class='docblock'><p>A stateless command.</p>
+
+<p>A command consists of a name and a list of parameters.</p>
+
+<h1 id='example' class='section-header'><a href='#example'>Example</a></h1>
+<p>The string</p>
+
+<pre class='rust rust-example-rendered'>
+<span class='op'>/</span><span class='ident'>join</span> <span class='ident'>channel1</span> <span class='ident'>channel2</span></pre>
+
+<p>...will become...</p>
+
+<pre class='rust rust-example-rendered'>
+<span class='ident'>Command</span> {
+    <span class='ident'>name</span>: <span class='string'>&quot;join&quot;</span>,
+    <span class='ident'>params</span>: [<span class='string'>&quot;channel1&quot;</span>, <span class='string'>&quot;channel2&quot;</span>]
+}</pre>
+</div><h2 class='fields'>Fields</h2>
 <table><tr class='stab '>
-                                  <td id='structfield.name'><code>name</code></td><td></td></tr><tr class='stab '>
-                                  <td id='structfield.params'><code>params</code></td><td></td></tr></table><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><code>impl&lt;'a&gt; TryFrom&lt;&amp;'a <a href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>&gt; for <a class='struct' href='../../telegram_groups_bot/types/struct.Command.html' title='telegram_groups_bot::types::Command'>Command</a></code></h3><div class='docblock'><p>Parse a text message, return a command if possible</p>
-</div><div class='impl-items'><h4 id='assoc_type.Err' class='type'><code>type Err = <a class='enum' href='../../telegram_groups_bot/errors/enum.CommandParseError.html' title='telegram_groups_bot::errors::CommandParseError'>CommandParseError</a></code></h4>
-<h4 id='method.try_from' class='method'><code>fn <a href='#method.try_from' class='fnname'>try_from</a>(text: &amp;'a <a href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;Self, <a class='enum' href='../../telegram_groups_bot/errors/enum.CommandParseError.html' title='telegram_groups_bot::errors::CommandParseError'>CommandParseError</a>&gt;</code></h4>
+                                  <td id='structfield.name'><code>name</code></td><td><div class='docblock'><p>Command name, without a leading slash character.</p>
+</div></td></tr><tr class='stab '>
+                                  <td id='structfield.params'><code>params</code></td><td><div class='docblock'><p>List of command parameters. May be empty.</p>
+</div></td></tr></table><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><code>impl&lt;'a&gt; TryFrom&lt;&amp;'a <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>&gt; for <a class='struct' href='../../telegram_groups_bot/types/struct.Command.html' title='telegram_groups_bot::types::Command'>Command</a></code></h3><div class='docblock'><p>Parse a text message, return a command if possible</p>
+</div><div class='impl-items'><h4 id='associatedtype.Err' class='type'><code>type Err = <a class='enum' href='../../telegram_groups_bot/errors/enum.CommandParseError.html' title='telegram_groups_bot::errors::CommandParseError'>CommandParseError</a></code></h4>
+<h4 id='method.try_from' class='method'><code>fn <a href='#method.try_from' class='fnname'>try_from</a>(text: &amp;'a <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;Self, <a class='enum' href='../../telegram_groups_bot/errors/enum.CommandParseError.html' title='telegram_groups_bot::errors::CommandParseError'>CommandParseError</a>&gt;</code></h4>
 </div><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Display.html' title='core::fmt::Display'>Display</a> for <a class='struct' href='../../telegram_groups_bot/types/struct.Command.html' title='telegram_groups_bot::types::Command'>Command</a></code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Display.html#method.fmt' class='fnname'>fmt</a>(&amp;self, f: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
 </div><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a> for <a class='struct' href='../../telegram_groups_bot/types/struct.Command.html' title='telegram_groups_bot::types::Command'>Command</a></code></h3><div class='impl-items'><h4 id='method.clone' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class='struct' href='../../telegram_groups_bot/types/struct.Command.html' title='telegram_groups_bot::types::Command'>Command</a></code></h4>
-<h4 id='method.clone_from' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code></h4>
-</div><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='struct' href='../../telegram_groups_bot/types/struct.Command.html' title='telegram_groups_bot::types::Command'>Command</a></code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#method.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
+<h4 id='method.clone_from' class='method'><span class="since">1.0.0</span><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code></h4>
+</div><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='struct' href='../../telegram_groups_bot/types/struct.Command.html' title='telegram_groups_bot::types::Command'>Command</a></code></h3><div class='impl-items'><h4 id='method.fmt-1' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#method.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
 </div></section>
     <section id='search' class="content hidden"></section>
 
@@ -102,7 +122,7 @@
 
                 <p>
                     Search functions by type signature (e.g.
-                    <code>vec -> usize</code>)
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
                 </p>
             </div>
         </div>
@@ -118,6 +138,6 @@
     <script src="../../jquery.js"></script>
     <script src="../../main.js"></script>
     
-    <script async src="../../search-index.js"></script>
+    <script defer src="../../search-index.js"></script>
 </body>
 </html>
