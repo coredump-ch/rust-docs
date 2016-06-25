@@ -9,8 +9,9 @@
 
     <title>optional.rs.html -- source</title>
 
-    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
-    <link rel="stylesheet" type="text/css" href="../../main.css">
+    <link rel="stylesheet" type="text/css" href="../../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../../main.css">
+    
 
     
     
@@ -273,6 +274,23 @@
 <span id="230">230</span>
 <span id="231">231</span>
 <span id="232">232</span>
+<span id="233">233</span>
+<span id="234">234</span>
+<span id="235">235</span>
+<span id="236">236</span>
+<span id="237">237</span>
+<span id="238">238</span>
+<span id="239">239</span>
+<span id="240">240</span>
+<span id="241">241</span>
+<span id="242">242</span>
+<span id="243">243</span>
+<span id="244">244</span>
+<span id="245">245</span>
+<span id="246">246</span>
+<span id="247">247</span>
+<span id="248">248</span>
+<span id="249">249</span>
 </pre><pre class='rust '>
 <span class='doccomment'>//! Implementation of the custom `Optional` type. See `Optional`</span>
 <span class='doccomment'>//! docs for more information.</span>
@@ -325,6 +343,23 @@
         <span class='kw'>match</span> <span class='self'>self</span> {
             <span class='ident'>Value</span>(<span class='ident'>val</span>) <span class='op'>=&gt;</span> <span class='ident'>val</span>,
             <span class='ident'>Absent</span> <span class='op'>=&gt;</span> <span class='macro'>panic</span><span class='macro'>!</span>(<span class='string'>&quot;called `Optional::unwrap()` on a `Absent` value&quot;</span>),
+        }
+    }
+
+    <span class='doccomment'>/// Returns the contained value or a default.</span>
+    <span class='doccomment'>///</span>
+    <span class='doccomment'>/// # Examples</span>
+    <span class='doccomment'>///</span>
+    <span class='doccomment'>/// ```</span>
+    <span class='doccomment'>/// # use spaceapi::optional::Optional::{Value,Absent};</span>
+    <span class='doccomment'>/// assert_eq!(Value(&quot;car&quot;).unwrap_or(&quot;bike&quot;), &quot;car&quot;);</span>
+    <span class='doccomment'>/// assert_eq!(Absent.unwrap_or(&quot;bike&quot;), &quot;bike&quot;);</span>
+    <span class='doccomment'>/// ```</span>
+    <span class='attribute'>#[<span class='ident'>inline</span>]</span>
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>unwrap_or</span>(<span class='self'>self</span>, <span class='ident'>def</span>: <span class='ident'>T</span>) <span class='op'>-&gt;</span> <span class='ident'>T</span> {
+        <span class='kw'>match</span> <span class='self'>self</span> {
+            <span class='ident'>Value</span>(<span class='ident'>x</span>) <span class='op'>=&gt;</span> <span class='ident'>x</span>,
+            <span class='ident'>Absent</span> <span class='op'>=&gt;</span> <span class='ident'>def</span>,
         }
     }
 
@@ -550,7 +585,7 @@
 
                 <p>
                     Search functions by type signature (e.g.
-                    <code>vec -> usize</code>)
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
                 </p>
             </div>
         </div>
@@ -559,13 +594,13 @@
     
 
     <script>
-        window.rootPath = "../../";
+        window.rootPath = "../../../";
         window.currentCrate = "spaceapi";
         window.playgroundUrl = "";
     </script>
-    <script src="../../jquery.js"></script>
-    <script src="../../main.js"></script>
+    <script src="../../../jquery.js"></script>
+    <script src="../../../main.js"></script>
     
-    <script defer src="../../search-index.js"></script>
+    <script defer src="../../../search-index.js"></script>
 </body>
 </html>

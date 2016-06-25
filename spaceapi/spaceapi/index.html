@@ -11,6 +11,7 @@
 
     <link rel="stylesheet" type="text/css" href="../rustdoc.css">
     <link rel="stylesheet" type="text/css" href="../main.css">
+    
 
     
     
@@ -43,10 +44,10 @@
 
     <section id='main' class="content mod">
 <h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>spaceapi</a></span><span class='out-of-band'><span id='render-detail'>
-            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
-                [<span class='inner'>&#x2212;</span>]
-            </a>
-        </span><a id='src-0' class='srclink' href='../src/spaceapi/lib.rs.html#1-92' title='goto source code'>[src]</a></span></h1>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a id='src-0' class='srclink' href='../src/spaceapi/src/lib.rs.html#1-92' title='goto source code'>[src]</a></span></h1>
 <div class='docblock'><p>Space API definitions and serialization.</p>
 
 <p>This crate contains all data-related definitions that are present in the Space API
@@ -64,6 +65,7 @@ trait for all structs.</p>
 <a href="http://doc.rust-lang.org/rustc-serialize/rustc_serialize/json/enum.Json.html"><code>Json</code></a>, use
 the <a href="http://doc.rust-lang.org/rustc-serialize/rustc_serialize/json/trait.ToJson.html"><code>ToJson</code></a>
 trait implementation. You can then create a string from the resulting object.</p>
+
 <pre class='rust rust-example-rendered'>
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>rustc_serialize</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>spaceapi</span>;
@@ -109,6 +111,7 @@ trait implementation. You can then create a string from the resulting object.</p
 
 <h2 id='deserializing' class='section-header'><a href='#deserializing'>Deserializing</a></h2>
 <p>You can deserialize any struct of the Space API through <code>rustc_serialize::json</code>:</p>
+
 <pre class='rust rust-example-rendered'>
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>rustc_serialize</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>spaceapi</span>;
@@ -125,131 +128,113 @@ trait implementation. You can then create a string from the resulting object.</p
 </div><h2 id='reexports' class='section-header'><a href="#reexports">Reexports</a></h2>
 <table><tr><td><code>pub use optional::<a class='enum' href='../spaceapi/optional/enum.Optional.html' title='spaceapi::optional::Optional'>Optional</a>;</code></td></tr><tr><td><code>pub use sensors::<a class='trait' href='../spaceapi/sensors/trait.SensorTemplate.html' title='spaceapi::sensors::SensorTemplate'>SensorTemplate</a>;</code></td></tr><tr><td><code>pub use sensors::<a class='struct' href='../spaceapi/sensors/struct.Sensors.html' title='spaceapi::sensors::Sensors'>Sensors</a>;</code></td></tr><tr><td><code>pub use sensors::<a class='struct' href='../spaceapi/sensors/struct.TemperatureSensor.html' title='spaceapi::sensors::TemperatureSensor'>TemperatureSensor</a>;</code></td></tr><tr><td><code>pub use sensors::<a class='struct' href='../spaceapi/sensors/struct.PeopleNowPresentSensor.html' title='spaceapi::sensors::PeopleNowPresentSensor'>PeopleNowPresentSensor</a>;</code></td></tr></table><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
 <table>
-                    <tr class=' module-item'>
-                        <td><a class='mod' href='optional/index.html'
-                               title='spaceapi::optional'>optional</a></td>
-                        <td class='docblock short'>
-                             <p>Implementation of the custom <code>Optional</code> type. See <code>Optional</code>
+                       <tr class=' module-item'>
+                           <td><a class='mod' href='optional/index.html'
+                                  title='spaceapi::optional'>optional</a></td>
+                           <td class='docblock short'>
+                                <p>Implementation of the custom <code>Optional</code> type. See <code>Optional</code>
 docs for more information.</p>
-
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='mod' href='sensors/index.html'
-                               title='spaceapi::sensors'>sensors</a></td>
-                        <td class='docblock short'>
-                             <p>Module defining all sensor related structures.</p>
-
-                        </td>
-                    </tr>
-                </table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='mod' href='sensors/index.html'
+                                  title='spaceapi::sensors'>sensors</a></td>
+                           <td class='docblock short'>
+                                <p>Module defining all sensor related structures.</p>
+                           </td>
+                       </tr></table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
-                    <tr class=' module-item'>
-                        <td><a class='struct' href='struct.Cache.html'
-                               title='spaceapi::Cache'>Cache</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='struct' href='struct.Contact.html'
-                               title='spaceapi::Contact'>Contact</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='struct' href='struct.Event.html'
-                               title='spaceapi::Event'>Event</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='struct' href='struct.Feed.html'
-                               title='spaceapi::Feed'>Feed</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='struct' href='struct.Feeds.html'
-                               title='spaceapi::Feeds'>Feeds</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='struct' href='struct.GoogleContact.html'
-                               title='spaceapi::GoogleContact'>GoogleContact</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='struct' href='struct.Icon.html'
-                               title='spaceapi::Icon'>Icon</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='struct' href='struct.Keymaster.html'
-                               title='spaceapi::Keymaster'>Keymaster</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='struct' href='struct.Location.html'
-                               title='spaceapi::Location'>Location</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='struct' href='struct.RadioShow.html'
-                               title='spaceapi::RadioShow'>RadioShow</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='struct' href='struct.Spacefed.html'
-                               title='spaceapi::Spacefed'>Spacefed</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='struct' href='struct.State.html'
-                               title='spaceapi::State'>State</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='struct' href='struct.Status.html'
-                               title='spaceapi::Status'>Status</a></td>
-                        <td class='docblock short'>
-                             <p>The main Space API status object.</p>
-
-                        </td>
-                    </tr>
-                </table></section>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.Cache.html'
+                                  title='spaceapi::Cache'>Cache</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.Contact.html'
+                                  title='spaceapi::Contact'>Contact</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.Event.html'
+                                  title='spaceapi::Event'>Event</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.Feed.html'
+                                  title='spaceapi::Feed'>Feed</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.Feeds.html'
+                                  title='spaceapi::Feeds'>Feeds</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.GoogleContact.html'
+                                  title='spaceapi::GoogleContact'>GoogleContact</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.Icon.html'
+                                  title='spaceapi::Icon'>Icon</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.Keymaster.html'
+                                  title='spaceapi::Keymaster'>Keymaster</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.Location.html'
+                                  title='spaceapi::Location'>Location</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.RadioShow.html'
+                                  title='spaceapi::RadioShow'>RadioShow</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.Spacefed.html'
+                                  title='spaceapi::Spacefed'>Spacefed</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.State.html'
+                                  title='spaceapi::State'>State</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.Status.html'
+                                  title='spaceapi::Status'>Status</a></td>
+                           <td class='docblock short'>
+                                <p>The main Space API status object.</p>
+                           </td>
+                       </tr></table></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>
@@ -292,7 +277,7 @@ docs for more information.</p>
 
                 <p>
                     Search functions by type signature (e.g.
-                    <code>vec -> usize</code>)
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
                 </p>
             </div>
         </div>

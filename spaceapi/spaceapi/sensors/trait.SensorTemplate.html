@@ -11,6 +11,7 @@
 
     <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
     <link rel="stylesheet" type="text/css" href="../../main.css">
+    
 
     
     
@@ -43,10 +44,10 @@
 
     <section id='main' class="content trait">
 <h1 class='fqn'><span class='in-band'>Trait <a href='../index.html'>spaceapi</a>::<wbr><a href='index.html'>sensors</a>::<wbr><a class='trait' href=''>SensorTemplate</a></span><span class='out-of-band'><span id='render-detail'>
-            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
-                [<span class='inner'>&#x2212;</span>]
-            </a>
-        </span><a id='src-178' class='srclink' href='../../src/spaceapi/sensors.rs.html#14-16' title='goto source code'>[src]</a></span></h1>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a id='src-183' class='srclink' href='../../src/spaceapi/src/sensors.rs.html#14-16' title='goto source code'>[src]</a></span></h1>
 <pre class='rust trait'>pub trait SensorTemplate: <a class='trait' href='https://doc.rust-lang.org/nightly/core/marker/trait.Send.html' title='core::marker::Send'>Send</a> + <a class='trait' href='https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html' title='core::marker::Sync'>Sync</a> {
     fn <a href='#tymethod.to_sensor' class='fnname'>to_sensor</a>(&amp;self, value_str: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, sensors: &amp;mut <a class='struct' href='../../spaceapi/sensors/struct.Sensors.html' title='spaceapi::sensors::Sensors'>Sensors</a>);
 }</pre><div class='docblock'><p>A trait for all possible sensor templates.</p>
@@ -62,8 +63,8 @@ A <code>SensorTemplate</code> is capable of registering itself in a <code>Sensor
     <li><code>impl <a class='trait' href='../../spaceapi/sensors/trait.SensorTemplate.html' title='spaceapi::sensors::SensorTemplate'>SensorTemplate</a> for <a class='struct' href='../../spaceapi/sensors/struct.PeopleNowPresentSensorTemplate.html' title='spaceapi::sensors::PeopleNowPresentSensorTemplate'>PeopleNowPresentSensorTemplate</a></code></li>
 <li><code>impl <a class='trait' href='../../spaceapi/sensors/trait.SensorTemplate.html' title='spaceapi::sensors::SensorTemplate'>SensorTemplate</a> for <a class='struct' href='../../spaceapi/sensors/struct.TemperatureSensorTemplate.html' title='spaceapi::sensors::TemperatureSensorTemplate'>TemperatureSensorTemplate</a></code></li>
 </ul><script type="text/javascript" async
-                              src="../../implementors/spaceapi/sensors/trait.SensorTemplate.js">
-                      </script></section>
+                         src="../../implementors/spaceapi/sensors/trait.SensorTemplate.js">
+                 </script></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>
@@ -106,7 +107,7 @@ A <code>SensorTemplate</code> is capable of registering itself in a <code>Sensor
 
                 <p>
                     Search functions by type signature (e.g.
-                    <code>vec -> usize</code>)
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
                 </p>
             </div>
         </div>
