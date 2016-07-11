@@ -11,6 +11,7 @@
 
     <link rel="stylesheet" type="text/css" href="../rustdoc.css">
     <link rel="stylesheet" type="text/css" href="../main.css">
+    
 
     
     
@@ -43,21 +44,20 @@
 
     <section id='main' class="content mod">
 <h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>telegram_groups_bot</a></span><span class='out-of-band'><span id='render-detail'>
-            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
-                [<span class='inner'>&#x2212;</span>]
-            </a>
-        </span><a id='src-0' class='srclink' href='../src/telegram_groups_bot/src/main.rs.html#1-142' title='goto source code'>[src]</a></span></h1>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a id='src-0' class='srclink' href='../src/telegram_groups_bot/src/main.rs.html#1-187' title='goto source code'>[src]</a></span></h1>
 <div class='docblock'>
 <h1 id='telegram-groups-bot' class='section-header'><a href='#telegram-groups-bot'>Telegram Groups Bot</a></h1>
 <p>This bot can be used to manage multiple Telegram topic group chats.
-Admins can register topic channels, which the users can then list.
-The users can also request the invite link for one of the topic channels.</p>
+Admins can register topic channels, which the users can then list and join.</p>
 
 <h2 id='command-api' class='section-header'><a href='#command-api'>Command API</a></h2>
 <ul>
 <li><code>/help</code> Show help</li>
-<li><code>/groups</code> Show list of available topic groups, along with the invite link</li>
-<li><code>/add &lt;name&gt; &lt;invite-link&gt;</code> Register a new topic group</li>
+<li><code>/list</code> Show list of available topic groups</li>
+<li><code>/add &lt;name&gt; &lt;url&gt;</code> Register a new topic group</li>
 </ul>
 
 <h2 id='implementation-details' class='section-header'><a href='#implementation-details'>Implementation Details</a></h2>
@@ -68,30 +68,41 @@ LongPoll.</p>
 is processed by a command handler in a thread pool.</p>
 </div><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
 <table>
-                    <tr class=' module-item'>
-                        <td><a class='mod' href='commands/index.html'
-                               title='telegram_groups_bot::commands'>commands</a></td>
-                        <td class='docblock short'>
-                             <p>Implementations of the command handlers.</p>
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='mod' href='errors/index.html'
-                               title='telegram_groups_bot::errors'>errors</a></td>
-                        <td class='docblock short'>
-                             <p>Errors used in this bot implementation.</p>
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='mod' href='types/index.html'
-                               title='telegram_groups_bot::types'>types</a></td>
-                        <td class='docblock short'>
-                             <p>Types used in this bot implementation.</p>
-                        </td>
-                    </tr>
-                </table></section>
+                       <tr class=' module-item'>
+                           <td><a class='mod' href='commands/index.html'
+                                  title='telegram_groups_bot::commands'>commands</a></td>
+                           <td class='docblock short'>
+                                <p>Implementations of the command handlers.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='mod' href='datastore/index.html'
+                                  title='telegram_groups_bot::datastore'>datastore</a></td>
+                           <td class='docblock short'>
+                                <p>Data storage backend.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='mod' href='errors/index.html'
+                                  title='telegram_groups_bot::errors'>errors</a></td>
+                           <td class='docblock short'>
+                                <p>Errors used in this bot implementation.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='mod' href='types/index.html'
+                                  title='telegram_groups_bot::types'>types</a></td>
+                           <td class='docblock short'>
+                                <p>Types used in this bot implementation.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='mod' href='utils/index.html'
+                                  title='telegram_groups_bot::utils'>utils</a></td>
+                           <td class='docblock short'>
+                                <p>Utility functions.</p>
+                           </td>
+                       </tr></table></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>
@@ -114,6 +125,8 @@ is processed by a command handler in a thread pool.</p>
                     <dd>Move down in search results</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>
 

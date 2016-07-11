@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["DatastoreError",""]],"fn":[["get_groups","Return list of all groups within that namespace from Redis."],["save_group","Save a topic group to Redis."]],"type":[["RedisPool",""]]});

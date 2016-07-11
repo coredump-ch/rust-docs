@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="API documentation for the Rust `commands` mod in crate `telegram_groups_bot`.">
-    <meta name="keywords" content="rust, rustlang, rust-lang, commands">
+    <meta name="description" content="API documentation for the Rust `datastore` mod in crate `telegram_groups_bot`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, datastore">
 
-    <title>telegram_groups_bot::commands - Rust</title>
+    <title>telegram_groups_bot::datastore - Rust</title>
 
     <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
     <link rel="stylesheet" type="text/css" href="../../main.css">
@@ -28,7 +28,7 @@
 
     <nav class="sidebar">
         
-        <p class='location'><a href='../index.html'>telegram_groups_bot</a></p><script>window.sidebarCurrent = {name: 'commands', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+        <p class='location'><a href='../index.html'>telegram_groups_bot</a></p><script>window.sidebarCurrent = {name: 'datastore', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
     </nav>
 
     <nav class="sub">
@@ -43,40 +43,42 @@
     </nav>
 
     <section id='main' class="content mod">
-<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>telegram_groups_bot</a>::<wbr><a class='mod' href=''>commands</a></span><span class='out-of-band'><span id='render-detail'>
+<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>telegram_groups_bot</a>::<wbr><a class='mod' href=''>datastore</a></span><span class='out-of-band'><span id='render-detail'>
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a id='src-79' class='srclink' href='../../src/telegram_groups_bot/src/commands.rs.html#1-107' title='goto source code'>[src]</a></span></h1>
-<div class='docblock'><p>Implementations of the command handlers.</p>
-</div><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+               </span><a id='src-146' class='srclink' href='../../src/telegram_groups_bot/src/datastore.rs.html#1-67' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>Data storage backend.</p>
+</div><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
 <table>
                        <tr class=' module-item'>
-                           <td><a class='fn' href='fn.handle_add.html'
-                                  title='telegram_groups_bot::commands::handle_add'>handle_add</a></td>
+                           <td><a class='enum' href='enum.DatastoreError.html'
+                                  title='telegram_groups_bot::datastore::DatastoreError'>DatastoreError</a></td>
                            <td class='docblock short'>
-                                <p>Add a new topic group.</p>
+                                
+                           </td>
+                       </tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.get_groups.html'
+                                  title='telegram_groups_bot::datastore::get_groups'>get_groups</a></td>
+                           <td class='docblock short'>
+                                <p>Return list of all groups within that namespace from Redis.</p>
                            </td>
                        </tr>
                        <tr class=' module-item'>
-                           <td><a class='fn' href='fn.handle_help.html'
-                                  title='telegram_groups_bot::commands::handle_help'>handle_help</a></td>
+                           <td><a class='fn' href='fn.save_group.html'
+                                  title='telegram_groups_bot::datastore::save_group'>save_group</a></td>
                            <td class='docblock short'>
-                                <p>Return help output.</p>
+                                <p>Save a topic group to Redis.</p>
                            </td>
-                       </tr>
+                       </tr></table><h2 id='types' class='section-header'><a href="#types">Type Definitions</a></h2>
+<table>
                        <tr class=' module-item'>
-                           <td><a class='fn' href='fn.handle_list.html'
-                                  title='telegram_groups_bot::commands::handle_list'>handle_list</a></td>
+                           <td><a class='type' href='type.RedisPool.html'
+                                  title='telegram_groups_bot::datastore::RedisPool'>RedisPool</a></td>
                            <td class='docblock short'>
-                                <p>Return list of groups.</p>
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class='fn' href='fn.handle_log.html'
-                                  title='telegram_groups_bot::commands::handle_log'>handle_log</a></td>
-                           <td class='docblock short'>
-                                <p>Log the command, don&#39;t do anything else.</p>
+                                
                            </td>
                        </tr></table></section>
     <section id='search' class="content hidden"></section>

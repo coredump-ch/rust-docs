@@ -1,1 +1,1 @@
-initSidebarItems({"fn":[["handle_add","Add a new topic group."],["handle_groups","Return list of groups."],["handle_help","Return help output."],["handle_log","Log the command, don't do anything else."]]});
+initSidebarItems({"fn":[["handle_add","Add a new topic group."],["handle_help","Return help output."],["handle_list","Return list of groups."],["handle_log","Log the command, don't do anything else."]]});
