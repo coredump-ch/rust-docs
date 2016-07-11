@@ -118,7 +118,7 @@
 <span class='kw'>use</span> <span class='ident'>r2d2</span>::{<span class='ident'>Pool</span>, <span class='ident'>GetTimeout</span>};
 <span class='kw'>use</span> <span class='ident'>r2d2_redis</span>::<span class='ident'>RedisConnectionManager</span>;
 
-<span class='kw'>const</span> <span class='ident'>hash_key</span>: <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;static</span> <span class='ident'>str</span> <span class='op'>=</span> <span class='string'>&quot;topicgroups&quot;</span>;
+<span class='kw'>const</span> <span class='ident'>HASH_KEY</span>: <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;static</span> <span class='ident'>str</span> <span class='op'>=</span> <span class='string'>&quot;topicgroups&quot;</span>;
 
 <span class='kw'>pub</span> <span class='kw'>type</span> <span class='ident'>RedisPool</span> <span class='op'>=</span> <span class='ident'>Pool</span><span class='op'>&lt;</span><span class='ident'>RedisConnectionManager</span><span class='op'>&gt;</span>;
 
@@ -143,7 +143,7 @@
 <span class='doccomment'>/// This is done to get some additional namespacing in case the database is</span>
 <span class='doccomment'>/// shared.</span>
 <span class='kw'>fn</span> <span class='ident'>get_hash_key</span>(<span class='ident'>group_id</span>: <span class='ident'>i64</span>) <span class='op'>-&gt;</span> <span class='ident'>String</span> {
-    <span class='macro'>format</span><span class='macro'>!</span>(<span class='string'>&quot;{}:{}&quot;</span>, <span class='ident'>hash_key</span>, <span class='ident'>group_id</span>)
+    <span class='macro'>format</span><span class='macro'>!</span>(<span class='string'>&quot;{}:{}&quot;</span>, <span class='ident'>HASH_KEY</span>, <span class='ident'>group_id</span>)
 }
 
 <span class='doccomment'>/// Save a topic group to Redis.</span>
