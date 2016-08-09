@@ -428,8 +428,19 @@
 <span id="384">384</span>
 <span id="385">385</span>
 <span id="386">386</span>
+<span id="387">387</span>
+<span id="388">388</span>
+<span id="389">389</span>
+<span id="390">390</span>
+<span id="391">391</span>
+<span id="392">392</span>
+<span id="393">393</span>
+<span id="394">394</span>
+<span id="395">395</span>
+<span id="396">396</span>
+<span id="397">397</span>
 </pre><pre class='rust '>
-<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>collections</span>::<span class='ident'>BTreeMap</span>;
+<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>collections</span>::{<span class='ident'>BTreeMap</span>, <span class='ident'>HashMap</span>};
 <span class='kw'>use</span> <span class='ident'>rustc_serialize</span>::<span class='ident'>json</span>::{<span class='ident'>Json</span>, <span class='ident'>ToJson</span>};
 <span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>optional</span>::<span class='ident'>Optional</span>;
 <span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>sensors</span>::<span class='ident'>SensorTemplate</span>;
@@ -561,6 +572,11 @@
     <span class='comment'>// Mutable data</span>
     <span class='kw'>pub</span> <span class='ident'>state</span>: <span class='ident'>State</span>,
     <span class='kw'>pub</span> <span class='ident'>sensors</span>: <span class='ident'>Optional</span><span class='op'>&lt;</span><span class='ident'>Sensors</span><span class='op'>&gt;</span>,
+
+    <span class='comment'>// Version extension</span>
+    <span class='comment'>// TODO: Once we move to serde, maybe we can store this</span>
+    <span class='comment'>// as `HashMap&lt;String, &amp;&#39;static str&gt;`?</span>
+    <span class='kw'>pub</span> <span class='ident'>ext_versions</span>: <span class='ident'>Optional</span><span class='op'>&lt;</span><span class='ident'>HashMap</span><span class='op'>&lt;</span><span class='ident'>String</span>, <span class='ident'>String</span><span class='op'>&gt;&gt;</span>,
 }
 
 <span class='kw'>impl</span> <span class='ident'>Status</span> {
@@ -593,6 +609,8 @@
                 <span class='ident'>icon</span>: <span class='ident'>Optional</span>::<span class='ident'>Absent</span>,
             },
             <span class='ident'>sensors</span>: <span class='ident'>Optional</span>::<span class='ident'>Absent</span>,
+
+            <span class='ident'>ext_versions</span>: <span class='ident'>Optional</span>::<span class='ident'>Absent</span>,
         }
     }
 
@@ -621,6 +639,10 @@
 
         <span class='ident'>d</span>.<span class='ident'>insert</span>(<span class='string'>&quot;state&quot;</span>.<span class='ident'>into</span>(), <span class='self'>self</span>.<span class='ident'>state</span>.<span class='ident'>to_json</span>());
         <span class='self'>self</span>.<span class='ident'>sensors</span>.<span class='ident'>as_ref</span>().<span class='ident'>map_or</span>((), <span class='op'>|</span><span class='ident'>v</span><span class='op'>|</span> { <span class='ident'>d</span>.<span class='ident'>insert</span>(<span class='string'>&quot;sensors&quot;</span>.<span class='ident'>into</span>(), <span class='ident'>v</span>.<span class='ident'>to_json</span>()); });
+
+        <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>Optional</span>::<span class='ident'>Value</span>(<span class='kw-2'>ref</span> <span class='ident'>versions</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>ext_versions</span> {
+            <span class='ident'>d</span>.<span class='ident'>insert</span>(<span class='string'>&quot;ext_versions&quot;</span>.<span class='ident'>into</span>(), <span class='ident'>versions</span>.<span class='ident'>to_json</span>());
+        }
 
         <span class='ident'>Json</span>::<span class='ident'>Object</span>(<span class='ident'>d</span>)
     }
