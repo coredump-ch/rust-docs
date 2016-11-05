@@ -148,8 +148,6 @@
 <span id="104">104</span>
 <span id="105">105</span>
 <span id="106">106</span>
-<span id="107">107</span>
-<span id="108">108</span>
 </pre><pre class='rust '>
 <span class='doccomment'>//! Space API definitions and serialization.</span>
 <span class='doccomment'>//!</span>
@@ -171,12 +169,11 @@
 <span class='doccomment'>//! the [`ToJson`](http://doc.rust-lang.org/rustc-serialize/rustc_serialize/json/trait.ToJson.html)</span>
 <span class='doccomment'>//! trait implementation. You can then create a string from the resulting object.</span>
 <span class='doccomment'>//!</span>
-<span class='doccomment'>//!     extern crate rustc_serialize;</span>
+<span class='doccomment'>//!     extern crate serde;</span>
+<span class='doccomment'>//!     extern crate serde_json;</span>
 <span class='doccomment'>//!     extern crate spaceapi;</span>
 <span class='doccomment'>//!</span>
 <span class='doccomment'>//!     use spaceapi::{Status, Location, Contact};</span>
-<span class='doccomment'>//!     use spaceapi::optional::Optional::{Absent, Value};</span>
-<span class='doccomment'>//!     use rustc_serialize::json::ToJson;</span>
 <span class='doccomment'>//!</span>
 <span class='doccomment'>//!     # fn main() {</span>
 <span class='doccomment'>//!     let status = Status::new(</span>
@@ -184,34 +181,33 @@
 <span class='doccomment'>//!         &quot;https://www.coredump.ch/logo.png&quot;,</span>
 <span class='doccomment'>//!         &quot;https://www.coredump.ch/&quot;,</span>
 <span class='doccomment'>//!         Location {</span>
-<span class='doccomment'>//!             address: Value(</span>
+<span class='doccomment'>//!             address: Some(</span>
 <span class='doccomment'>//!                 &quot;Spinnereistrasse 2, 8640 Rapperswil, Switzerland&quot;.into()),</span>
 <span class='doccomment'>//!             lat: 47.22936,</span>
 <span class='doccomment'>//!             lon: 8.82949,</span>
 <span class='doccomment'>//!         },</span>
 <span class='doccomment'>//!         Contact {</span>
-<span class='doccomment'>//!             phone: Absent,</span>
-<span class='doccomment'>//!             sip: Absent,</span>
-<span class='doccomment'>//!             keymasters: Absent,</span>
-<span class='doccomment'>//!             irc: Value(&quot;irc://freenode.net/#coredump&quot;.into()),</span>
-<span class='doccomment'>//!             twitter: Value(&quot;@coredump_ch&quot;.into()),</span>
-<span class='doccomment'>//!             facebook: Absent,</span>
-<span class='doccomment'>//!             google: Absent,</span>
-<span class='doccomment'>//!             identica: Absent,</span>
-<span class='doccomment'>//!             foursquare: Value(&quot;525c20e5498e875d8231b1e5&quot;.into()),</span>
-<span class='doccomment'>//!             email: Value(&quot;danilo@coredump.ch&quot;.into()),</span>
-<span class='doccomment'>//!             ml: Absent,</span>
-<span class='doccomment'>//!             jabber: Absent,</span>
-<span class='doccomment'>//!             issue_mail: Absent,</span>
+<span class='doccomment'>//!             phone: None,</span>
+<span class='doccomment'>//!             sip: None,</span>
+<span class='doccomment'>//!             keymasters: None,</span>
+<span class='doccomment'>//!             irc: Some(&quot;irc://freenode.net/#coredump&quot;.into()),</span>
+<span class='doccomment'>//!             twitter: Some(&quot;@coredump_ch&quot;.into()),</span>
+<span class='doccomment'>//!             facebook: None,</span>
+<span class='doccomment'>//!             google: None,</span>
+<span class='doccomment'>//!             identica: None,</span>
+<span class='doccomment'>//!             foursquare: Some(&quot;525c20e5498e875d8231b1e5&quot;.into()),</span>
+<span class='doccomment'>//!             email: Some(&quot;danilo@coredump.ch&quot;.into()),</span>
+<span class='doccomment'>//!             ml: None,</span>
+<span class='doccomment'>//!             jabber: None,</span>
+<span class='doccomment'>//!             issue_mail: None,</span>
 <span class='doccomment'>//!         },</span>
 <span class='doccomment'>//!         vec![</span>
 <span class='doccomment'>//!             &quot;email&quot;.into(),</span>
 <span class='doccomment'>//!             &quot;twitter&quot;.into(),</span>
 <span class='doccomment'>//!         ],</span>
 <span class='doccomment'>//!     );</span>
-<span class='doccomment'>//!</span>
-<span class='doccomment'>//!     let jsonstatus = status.to_json();</span>
-<span class='doccomment'>//!     let stringstatus = jsonstatus.to_string();</span>
+<span class='doccomment'>//!     let stringstatus = serde_json::to_string(&amp;status).unwrap();</span>
+<span class='doccomment'>//!     let jsonstatus: Status = serde_json::from_str(&amp;stringstatus).unwrap();</span>
 <span class='doccomment'>//!</span>
 <span class='doccomment'>//!     # assert!(&amp;stringstatus[0..1] == &quot;{&quot;);</span>
 <span class='doccomment'>//!     # }</span>
@@ -220,26 +216,26 @@
 <span class='doccomment'>//!</span>
 <span class='doccomment'>//! You can deserialize any struct of the Space API through `rustc_serialize::json`:</span>
 <span class='doccomment'>//!</span>
-<span class='doccomment'>//!     extern crate rustc_serialize;</span>
+<span class='doccomment'>//!     extern crate serde;</span>
+<span class='doccomment'>//!     extern crate serde_json;</span>
 <span class='doccomment'>//!     extern crate spaceapi;</span>
 <span class='doccomment'>//!</span>
-<span class='doccomment'>//!     use rustc_serialize::json;</span>
 <span class='doccomment'>//!     use spaceapi::Location;</span>
 <span class='doccomment'>//!</span>
 <span class='doccomment'>//!     # fn main() {</span>
 <span class='doccomment'>//!     let location = &quot;{\&quot;lat\&quot;: 47.22936, \&quot;lon\&quot;: 8.82949}&quot;;</span>
-<span class='doccomment'>//!     let decoded: Location = json::decode(location).unwrap();</span>
+<span class='doccomment'>//!     let decoded: Location = serde_json::from_str(location).unwrap();</span>
 <span class='doccomment'>//!     println!(&quot;{:?}&quot;, decoded);</span>
 <span class='doccomment'>//!</span>
 <span class='doccomment'>//!     // Output:</span>
-<span class='doccomment'>//!     // Location { address: Absent, lat: 47.22936000000001, lon: 8.829490000000002 }</span>
+<span class='doccomment'>//!     // Location { address: None, lat: 47.22936000000001, lon: 8.829490000000002 }</span>
 <span class='doccomment'>//!     # }</span>
 
 <span class='attribute'>#[<span class='ident'>macro_use</span>]</span>
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>log</span>;
-<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>rustc_serialize</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>serde</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>serde_json</span>;
 
-<span class='kw'>pub</span> <span class='kw'>mod</span> <span class='ident'>optional</span>;
 <span class='kw'>pub</span> <span class='kw'>mod</span> <span class='ident'>sensors</span>;
 <span class='kw'>mod</span> <span class='ident'>status</span>;
 <span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>status</span>::<span class='op'>*</span>;
